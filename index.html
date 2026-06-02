@@ -257,6 +257,9 @@ section{padding:30px 0 70px}
           </div>
         </div>
         <div class="animals" id="animalsGrid"></div>
+        <div style="text-align:center;margin-top:28px">
+          <button class="btn" id="showMoreBtn" onclick="showAllAnimals()" style="display:none;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none;border-radius:999px;padding:14px 36px;font:inherit;font-size:1rem;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(191,75,60,.22)">🐾 Voir plus d'animaux</button>
+        </div>
       </div>
     </section>
 
@@ -356,7 +359,8 @@ const animals = [
   {name:'Milo',species:'chat',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/2560px-Cat_August_2010-4.jpg',race_fr:'Chat tigré',race_co:'Gattu tigratu',desc_fr:'Profil calme et rassurant.',desc_co:'Prufilu calmu è rassicurante.',asso:'Des Z’amours de Chats'},
   {name:'Bella',species:'chien',age:'senior',gender:'♀',area:'Ajaccio',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',race_fr:'Beagle senior',race_co:'Beagle seniore',desc_fr:'Chien équilibré et proche de l’humain.',desc_co:'Cane equilibratu è vicinu à l’umanu.',asso:'SPA Ajaccio'},
   {name:'Nox',species:'chat',age:'chaton',gender:'♂',area:'Porticcio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/6/6f/Tuxedo_kitten.jpg',race_fr:'Chaton noir et blanc',race_co:'Gattinu neru è biancu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Mayday Animaux'},
-  {name:'Shumi',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'}
+  {name:'Shumi',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
+  {name:'Shumi2',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
 ];
 
 const assos = [
@@ -585,8 +589,22 @@ function animalCard(a){
   </article>`;
 }
 
+function sortByPriority(list){
+  return [...list].sort((a, b) => {
+    const aP = (a.species==='chien' && a.urgent) ? 0 : (a.species==='chien' && a.age==='senior') ? 1 : 2;
+    const bP = (b.species==='chien' && b.urgent) ? 0 : (b.species==='chien' && b.age==='senior') ? 1 : 2;
+    return aP - bP;
+  });
+}
 function renderAnimals(list){
-  document.getElementById('animalsGrid').innerHTML = list.slice(0, visible).map(animalCard).join('');
+  const sorted = sortByPriority(list);
+  const showMore = document.getElementById('showMoreBtn');
+  document.getElementById('animalsGrid').innerHTML = sorted.slice(0, visible).map(animalCard).join('');
+  if(showMore) showMore.style.display = (list.length > 6 && visible <= 6) ? 'inline-block' : 'none';
+}
+function showAllAnimals(){
+  visible = 9999;
+  filterAnimals();
 }
 
 function renderAssos(){
@@ -651,6 +669,7 @@ function resetAllFilters(){
   document.getElementById('filterArea').value = '';
   document.getElementById('filterAssociation').value = '';
   urgentOnly = false;
+  visible = 6;
   filterAnimals();
 }
 
