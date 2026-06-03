@@ -90,10 +90,10 @@ h1::before{content:var(--hero-prefix, "Ensemble, offrons-leur");display:block;fo
   border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 46px rgba(7,36,58,.26);
   position:absolute;left:44px;right:44px;bottom:12px;z-index:3;
 }
-.search-shell::before{content:"TROUVEZ VOTRE COMPAGNON";display:block;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;letter-spacing:.01em;padding:16px 24px 0}
-.search-shell::after{content:"Truvate u vostru cumpagnu";display:block;color:#de7f6d;font-style:italic;font-weight:700;padding:0 24px 10px}
-.search-grid{display:grid;grid-template-columns:1.2fr .78fr .78fr .85fr 1fr;gap:10px;padding:0 24px 18px}
-.field,.select{height:48px;border-radius:9px;border:1px solid rgba(21,34,48,.08);background:#fff;padding:0 15px;font:inherit;color:var(--text);outline:none}
+.search-shell::before{content:"TROUVEZ VOTRE COMPAGNON";display:block;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;letter-spacing:.01em;padding:14px 20px 0}
+.search-shell::after{content:"Truvate u vostru cumpagnu";display:block;color:#de7f6d;font-style:italic;font-weight:700;padding:0 20px 8px}
+.search-grid{display:grid;grid-template-columns:1.12fr .68fr .68fr .72fr .82fr .98fr;gap:8px;padding:0 20px 16px}
+.field,.select{height:44px;border-radius:8px;border:1px solid rgba(21,34,48,.08);background:#fff;padding:0 12px;font:inherit;font-size:.92rem;color:var(--text);outline:none}
 .field:focus,.select:focus{border-color:rgba(22,58,97,.34);box-shadow:0 0 0 4px rgba(255,255,255,.14)}
 section{padding:30px 0 70px}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
@@ -291,21 +291,21 @@ h1::before{
   border-radius:24px !important;
 }
 .search-shell::before{
-  padding:16px 24px 0 !important;
+  padding:14px 20px 0 !important;
   font-size:1.05rem !important;
 }
 .search-shell::after{
-  padding:0 24px 10px !important;
+  padding:0 20px 8px !important;
 }
 .search-grid{
   display:grid !important;
-  grid-template-columns:1.2fr .78fr .78fr .85fr 1fr !important;
-  gap:10px !important;
-  padding:0 24px 18px !important;
+  grid-template-columns:1.12fr .68fr .68fr .72fr .82fr .98fr !important;
+  gap:8px !important;
+  padding:0 20px 16px !important;
 }
 .field,.select{
-  height:48px !important;
-  font-size:inherit !important;
+  height:44px !important;
+  font-size:.92rem !important;
 }
 .section-head{
   display:flex !important;
@@ -418,6 +418,7 @@ h1::before{
                 <input class="field" id="searchInput" data-ph="search.placeholder" placeholder="Nom, race, association…" oninput="filterAnimals()" />
                 <select class="select" id="filterSpecies" onchange="filterAnimals()"></select>
                 <select class="select" id="filterAge" onchange="filterAnimals()"></select>
+                <select class="select" id="filterGender" onchange="filterAnimals()"></select>
                 <select class="select" id="filterArea" onchange="filterAnimals()"></select>
                 <select class="select" id="filterAssociation" onchange="filterAnimals()"></select>
               </div>
@@ -498,7 +499,7 @@ const i18n = {
     'hero.title':'une<br>nouvelle vie',
     'hero.sub':'Adoptez un compagnon et faites la différence. <em><br>L’amore ùn hà micca prezzu.</em>',
     'stats.animals':'animaux à l’adoption','stats.assos':'associations partenaires',
-    'search.placeholder':'Nom, race, association…','search.allSpecies':'Toutes espèces','search.cat':'🐱 Chat','search.dog':'🐶 Chien','search.allAges':'Tous les âges','search.young':'Chaton / Chiot','search.adult':'Adulte','search.senior':'Senior','search.allAreas':'Toutes zones','search.allAssociations':'Toutes associations',
+    'search.placeholder':'Nom, race, association…','search.allSpecies':'Toutes espèces','search.cat':'🐱 Chat','search.dog':'🐶 Chien','search.allAges':'Tous les âges','search.young':'Chaton / Chiot','search.adult':'Adulte','search.senior':'Senior','search.allGenders':'Sexe','search.female':'Femelle ♀','search.male':'Mâle ♂','search.allAreas':'Toutes zones','search.allAssociations':'Toutes associations',
     'chip.urgent':'Urgence',
     'animals.eyebrow':'🐾 À adopter','animals.title':'Ils n\'attendent que vous','animals.sub':'Tous les animaux proposés à l\'adoption par nos associations partenaires en Corse du Sud.','animals.urgentBtn':'Urgence','animals.allBtn':'Tous',
     'assos.eyebrow':'🤝 Réseau local','assos.title':'Nos Associations Partenaires','assos.sub':'Retrouvez les 11 associations de protection animale partenaires.',
@@ -520,7 +521,7 @@ const i18n = {
     'hero.title':'una<br>nova vita',
     'hero.sub':'Aduttate un cumpagnu è fate a differenza. <em><br>L’amore ùn hà micca prezzu.</em>',
     'stats.animals':'animali da aduttà','stats.assos':'associi partenarii',
-    'search.placeholder':'Nome, razza, assuciazione…','search.allSpecies':'Tutte e spezie','search.cat':'🐱 Gattu','search.dog':'🐶 Cane','search.allAges':'Tutte l’età','search.young':'Gattinu / Cagnolu','search.adult':'Adultu','search.senior':'Seniore','search.allAreas':'Tutte e zone','search.allAssociations':'Tutte l’associi',
+    'search.placeholder':'Nome, razza, assuciazione…','search.allSpecies':'Tutte e spezie','search.cat':'🐱 Gattu','search.dog':'🐶 Cane','search.allAges':'Tutte l’età','search.young':'Gattinu / Cagnolu','search.adult':'Adultu','search.senior':'Seniore','search.allGenders':'Sessu','search.female':'Femella ♀','search.male':'Masciu ♂','search.allAreas':'Tutte e zone','search.allAssociations':'Tutte l’associi',
     'chip.urgent':'Urgenza',
     'animals.eyebrow':'🐾 Da aduttà','animals.title':'Ùn aspettanu chè voi','animals.sub':'Tutti l’animali pruposti à l’adozione da e nostre associi partenarie in Corsica Suttana.','animals.urgentBtn':'Urgenza','animals.allBtn':'Tutti',
     'assos.eyebrow':'🤝 Reta lucale','assos.title':'E nostre associi partenarie','assos.sub':'Truvate e 11 associi partenarie di prutezzione animale.',
@@ -743,6 +744,7 @@ function typeLabel(v){return t('types.' + v)}
 function buildFilters(){
   document.getElementById('filterSpecies').innerHTML = `<option value="">${t('search.allSpecies')}</option><option value="chat">${t('search.cat')}</option><option value="chien">${t('search.dog')}</option>`;
   document.getElementById('filterAge').innerHTML = `<option value="">${t('search.allAges')}</option><option value="chaton">${t('search.young')}</option><option value="adulte">${t('search.adult')}</option><option value="senior">${t('search.senior')}</option>`;
+  document.getElementById('filterGender').innerHTML = `<option value="">${t('search.allGenders')}</option><option value="♀">${t('search.female')}</option><option value="♂">${t('search.male')}</option>`;
   const areas = [...new Set(animals.map(a => a.area))];
   document.getElementById('filterArea').innerHTML = `<option value="">${t('search.allAreas')}</option>` + areas.map(a => `<option value="${a}">${a}</option>`).join('');
   const associations = [...new Set(animals.map(a => a.asso).filter(Boolean))].sort((a,b) => a.localeCompare(b, 'fr'));
@@ -860,6 +862,7 @@ function getFilteredAnimals(){
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   const species = document.getElementById('filterSpecies').value;
   const age = document.getElementById('filterAge').value;
+  const gender = document.getElementById('filterGender').value;
   const area = document.getElementById('filterArea').value;
   const association = document.getElementById('filterAssociation').value;
   return animals.filter(a => {
@@ -867,6 +870,7 @@ function getFilteredAnimals(){
     if(q && !txt.includes(q)) return false;
     if(species && a.species !== species) return false;
     if(age && a.age !== age) return false;
+    if(gender && a.gender !== gender) return false;
     if(area && a.area !== area) return false;
     if(association && a.asso !== association) return false;
     if(urgentOnly && !a.urgent) return false;
@@ -885,6 +889,7 @@ function resetAllFilters(){
   document.getElementById('searchInput').value = '';
   document.getElementById('filterSpecies').value = '';
   document.getElementById('filterAge').value = '';
+  document.getElementById('filterGender').value = '';
   document.getElementById('filterArea').value = '';
   document.getElementById('filterAssociation').value = '';
   urgentOnly = false;
