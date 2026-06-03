@@ -146,6 +146,22 @@ section{padding:30px 0 70px}
 .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .modal-media{border-radius:24px;overflow:hidden;min-height:320px;background:#e6ecf3}
 .modal-media img{width:100%;height:100%;object-fit:cover}
+.modal-carousel{position:relative;height:100%;min-height:320px;background:#e6ecf3;border-radius:24px;overflow:hidden}
+.modal-track{display:flex;height:100%;transition:transform .38s cubic-bezier(.22,.61,.36,1)}
+.modal-slide{min-width:100%;height:100%;position:relative;background:#e6ecf3}
+.modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
+.modal-slide img,.modal-slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:1px solid rgba(255,255,255,.32);border-radius:50%;cursor:pointer;z-index:3;background:rgba(255,255,255,.12);color:#fff;font-size:1.45rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease}
+.modal-carousel:hover .carousel-nav{opacity:1}
+.carousel-nav:hover{background:rgba(255,255,255,.24);box-shadow:0 14px 32px rgba(0,0,0,.20)}
+.carousel-nav:focus-visible{opacity:1;outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.32),0 14px 32px rgba(0,0,0,.20)}
+.carousel-nav.prev{left:16px}
+.carousel-nav.next{right:16px}
+.carousel-dots{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;align-items:center;gap:9px;z-index:3}
+.carousel-dot{width:7px;height:7px;border-radius:999px;border:none;padding:0;background:rgba(255,255,255,.38);cursor:pointer;box-shadow:none;transition:all .22s ease}
+.carousel-dot:hover{background:rgba(255,255,255,.7)}
+.carousel-dot.active{width:24px;height:7px;border-radius:999px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+@media (hover:none){.carousel-nav{opacity:1;background:rgba(255,255,255,.18)}}
 @media (max-width:1100px){
   .search-grid,.modal-grid{grid-template-columns:1fr}
   .stats,.animals,.assoc-grid,.vol-grid,.steps{grid-template-columns:repeat(2,1fr)}
@@ -542,12 +558,12 @@ const i18n = {
 };
 
 const animals = [
-  {name:'Luna',species:'chat',age:'chaton',gender:'♀',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/1280px-Cute_grey_kitten.jpg',race_fr:'Chaton européen gris',race_co:'Gattinu europeu grisgiu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Les Chats de l’Île'},
-  {name:'Rocky',species:'chien',age:'adulte',gender:'♂',area:'Sarrola-Carcopino',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/MiloSmet.JPG/1200px-MiloSmet.JPG',race_fr:'Beagle croisé',race_co:'Beagle incrociu',desc_fr:'Chien équilibré et proche de l’humain.',desc_co:'Cane equilibratu è vicinu à l’umanu.',asso:'Les Sans Colliers de Corse'},
+  {name:'Luna',species:'chat',age:'chaton',gender:'♀',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/1280px-Cute_grey_kitten.jpg',medias:[{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/1280px-Cute_grey_kitten.jpg',alt:'Luna photo 1'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/1280px-Gustav_chocolate.jpg',alt:'Luna photo 2'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/1280px-Felis_catus-cat_on_snow.jpg',alt:'Luna photo 3'}],race_fr:'Chaton européen gris',race_co:'Gattinu europeu grisgiu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Les Chats de l’Île'},
+  {name:'Rocky',species:'chien',age:'adulte',gender:'♂',area:'Sarrola-Carcopino',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/MiloSmet.JPG/1200px-MiloSmet.JPG',medias:[{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/MiloSmet.JPG/1200px-MiloSmet.JPG',alt:'Rocky photo 1'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',alt:'Rocky photo 2'},{type:'video',src:'https://www.w3schools.com/html/mov_bbb.mp4',poster:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',alt:'Rocky vidéo'}],race_fr:'Beagle croisé',race_co:'Beagle incrociu',desc_fr:'Chien équilibré et proche de l’humain.',desc_co:'Cane equilibratu è vicinu à l’umanu.',asso:'Les Sans Colliers de Corse'},
   {name:'Milo',species:'chat',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/2560px-Cat_August_2010-4.jpg',race_fr:'Chat tigré',race_co:'Gattu tigratu',desc_fr:'Profil calme et rassurant.',desc_co:'Prufilu calmu è rassicurante.',asso:'Des Z’amours de Chats'},
   {name:'Bella',species:'chien',age:'senior',gender:'♀',area:'Ajaccio',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',race_fr:'Beagle senior',race_co:'Beagle seniore',desc_fr:'Chien équilibré et proche de l’humain.',desc_co:'Cane equilibratu è vicinu à l’umanu.',asso:'SPA Ajaccio'},
   {name:'Nox',species:'chat',age:'chaton',gender:'♂',area:'Porticcio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/6/6f/Tuxedo_kitten.jpg',race_fr:'Chaton noir et blanc',race_co:'Gattinu neru è biancu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Mayday Animaux'},
-  {name:'Shumi',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
+  {name:'Shumi',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',medias:[{type:'image',src:'Shumi.jpg',alt:'Shumi photo 1'},{type:'image',src:'Shumi.jpg',alt:'Shumi photo 2'},{type:'video',src:'Shumi (1).mov',poster:'Shumi.jpg',alt:'Shumi vidéo'}],race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
   {name:'Shumi2',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d’énergie et très joueur.<br>On vous l’affirme vous ne pourrez que l’aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d’energia è assai ghjucadore<br>Vi l’affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
 ];
 
@@ -939,15 +955,55 @@ function buildAssoContactPills(asso){
   return pills.length ? pills.join('') : `<span class="linkpill disabled">ℹ️ ${t('animal.notProvided')}</span>`;
 }
 
+function getAnimalMedias(animal){
+  if(Array.isArray(animal.medias) && animal.medias.length){
+    return animal.medias.map(function(m){
+      return { type: m.type === 'video' ? 'video' : 'image', src: m.src, poster: m.poster || animal.photo, alt: m.alt || animal.name };
+    });
+  }
+  return [{type:'image', src: animal.photo, poster: animal.photo, alt: animal.name}];
+}
+function renderMediaSlide(media, animalName){
+  if(media.type === 'video') return `<div class="modal-slide"><video controls preload="metadata" playsinline poster="${media.poster || ''}" aria-label="${media.alt || animalName}"><source src="${media.src}"></video></div>`;
+  return `<div class="modal-slide"><img src="${media.src}" alt="${media.alt || animalName}" /></div>`;
+}
+function bindModalCarousel(){
+  const carousel = document.getElementById('modalCarousel');
+  if(!carousel) return;
+  const track = carousel.querySelector('.modal-track');
+  const slides = Array.from(carousel.querySelectorAll('.modal-slide'));
+  const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+  let index = 0;
+  function sync(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot,i) => dot.classList.toggle('active', i === index));
+    slides.forEach((slide,i) => slide.querySelectorAll('video').forEach(v => { if(i !== index) v.pause(); }));
+  }
+  carousel.querySelector('.carousel-nav.prev')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index - 1 + slides.length) % slides.length; sync(); });
+  carousel.querySelector('.carousel-nav.next')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index + 1) % slides.length; sync(); });
+  dots.forEach((dot,i) => dot.addEventListener('click', function(e){ e.stopPropagation(); index = i; sync(); }));
+  sync();
+}
 function openModal(name){
   const a = animals.find(x => x.name === name);
   if(!a) return;
   const asso = findAssociationByAnimal(a);
   const contactPills = buildAssoContactPills(asso);
-
+  const medias = getAnimalMedias(a);
+  const slides = medias.map(m => renderMediaSlide(m, a.name)).join('');
+  const dots = medias.length > 1 ? medias.map((m,i) => `<button class="carousel-dot ${i===0?'active':''}" type="button" aria-label="Média ${i+1}"></button>`).join('') : '';
+  const nav = medias.length > 1 ? `
+      <button class="carousel-nav prev" type="button" aria-label="${t('animal.prev')}">‹</button>
+      <button class="carousel-nav next" type="button" aria-label="${t('animal.next')}">›</button>
+      <div class="carousel-dots">${dots}</div>` : '';
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-grid">
-      <div class="modal-media"><img src="${a.photo}" alt="${a.name}" /></div>
+      <div class="modal-media">
+        <div class="modal-carousel" id="modalCarousel">
+          <div class="modal-track">${slides}</div>
+          ${nav}
+        </div>
+      </div>
       <div>
         <h2 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:2.1rem">${a.name}</h2>
         <div class="tags" style="margin-top:14px">
@@ -957,7 +1013,6 @@ function openModal(name){
           ${a.urgent ? `<span class="tag">🔴 ${t('chip.urgent')}</span>` : ''}
         </div>
         <p style="color:var(--muted);line-height:1.8">${lang==='fr' ? a.desc_fr : a.desc_co} ${t('animal.standard')}</p>
-
         <div style="font-weight:800;margin:18px 0 8px">${t('animal.partner')}</div>
         <div class="card" style="padding:14px 16px;border-radius:20px">
           <div style="font-weight:800">${a.asso}</div>
@@ -966,9 +1021,9 @@ function openModal(name){
         </div>
       </div>
     </div>`;
-
   document.getElementById('modalBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
+  bindModalCarousel();
 }
 function closeModal(e){if(e.target.id === 'modalBackdrop') closeModalDirect()}
 function closeModalDirect(){document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''}
@@ -1019,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
 });
 
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModalDirect() });
+document.addEventListener('keydown', e => { const modalOpen = document.getElementById('modalBackdrop').classList.contains('open'); if(e.key === 'Escape') closeModalDirect(); if(!modalOpen) return; const prev = document.querySelector('.carousel-nav.prev'); const next = document.querySelector('.carousel-nav.next'); if(e.key === 'ArrowLeft' && prev) prev.click(); if(e.key === 'ArrowRight' && next) next.click(); });
 </script>
 </body>
 </html>
