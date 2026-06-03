@@ -131,6 +131,7 @@ section{padding:30px 0 70px}
 .vol-asso-pill::before{content:'👉';font-size:.92rem;line-height:1}
 .assoc-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
 .linkpill{padding:9px 11px;border-radius:14px;background:rgba(21,34,48,.05);font-size:.84rem;font-weight:700;color:var(--primary)}
+.linkpill.disabled{color:var(--muted);opacity:.78;pointer-events:none}
 .band{background:linear-gradient(135deg,#0f1723,#13283f 55%, #10253d);color:#fff;border-radius:28px;box-shadow:var(--shadow-md);overflow:hidden;position:relative}
 .band:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 10% 18%, rgba(255,255,255,.08), transparent 18%),radial-gradient(circle at 84% 80%, rgba(255,255,255,.08), transparent 20%)}
 .steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:32px}
@@ -507,7 +508,7 @@ const i18n = {
     'assos.eyebrow':'🤝 Réseau local','assos.title':'Nos Associations Partenaires','assos.sub':'Retrouvez les 11 associations de protection animale partenaires.',
     'steps.eyebrow':'✨ Comment ça marche','steps.title':'Adopter, c’est simple','steps.sub':'Quelques étapes pour accueillir un compagnon et changer leur vie et la votre.',
     'vol.eyebrow':'💛 Bénévolat','vol.title':'Donnez de votre temps','vol.sub':'Les associations ont besoin de vous : familles d’accueil, transport, nourrissage…',
-    'animal.view':'Voir la fiche','animal.contact':'Contacter','animal.close':'Fermer','animal.partner':'Association responsable','animal.standard':'Le dossier d’adoption et le premier échange se font directement avec l’association indiquée.',
+    'animal.view':'Voir la fiche','animal.contact':'Contacter','animal.close':'Fermer','animal.partner':'Association responsable','animal.standard':'Le dossier d’adoption et le premier échange se font directement avec l’association indiquée.','animal.contactInfo':'Coordonnées de l’association','animal.notProvided':'Non communiqué',
     'steps.cards':[
       {no:'01',icon:'🔎',title:'Cherchez',text:'Filtrez rapidement par espèce, âge, zone...'},
       {no:'02',icon:'💬',title:'Contactez',text:'Prenez contact directement avec l’association responsable de l’animal qui vous a touché.'},
@@ -529,7 +530,7 @@ const i18n = {
     'assos.eyebrow':'🤝 Reta lucale','assos.title':'E nostre associi partenarie','assos.sub':'Truvate e 11 associi partenarie di prutezzione animale.',
     'steps.eyebrow':'✨ Cumu funziona','steps.title':'Aduttà hè simplice','steps.sub':'Qualchì tappa per accoglie un cumpagnu è cambià a so vita è a vostra.',
     'vol.eyebrow':'💛 Voluntariatu','vol.title':'Date di u vostru tempu','vol.sub':'L’associi anu bisognu di voi : famiglie d’accogliu, trasportu, nutrimentu…',
-    'animal.view':'Vede a scheda','animal.contact':'Cuntattà','animal.close':'Chjode','animal.partner':'Assuciazione rispunsevule','animal.standard':'U cartulare d’adozione è u primu scambiu si facenu direttamente cù l’assuciazione indicata.',
+    'animal.view':'Vede a scheda','animal.contact':'Cuntattà','animal.close':'Chjode','animal.partner':'Assuciazione rispunsevule','animal.standard':'U cartulare d’adozione è u primu scambiu si facenu direttamente cù l’assuciazione indicata.','animal.contactInfo':'Cuntatti di l’assuciazione','animal.notProvided':'Micca cumunicatu',
     'steps.cards':[
       {no:'01',icon:'🔎',title:'Circate',text:'Filtrate prestu per spezia, età, zona...'},
       {no:'02',icon:'💬',title:'Cuntattate',text:'Pigliate cuntattu direttamente cù l’assuciazione rispunsevule di l’animale chì vi hà toccu.'},
@@ -901,15 +902,74 @@ function resetAllFilters(){
 
 function toggleFav(e,btn){e.stopPropagation();btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍'}
 
+
+function stripDiacritics(value){
+  return (value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+function normalizeAssoName(value){
+  return stripDiacritics(String(value || '').toLowerCase())
+    .replace(/[’']/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/spa/g, 'societe protectrice animaux')
+    .replace(/scda/g, 'refuge caldaniccia')
+    .trim();
+}
+function isMissingInfo(value){
+  const v = stripDiacritics(String(value || '').trim().toLowerCase());
+  return !v || v === 'non communique';
+}
+function findAssociationByAnimal(animal){
+  const animalName = normalizeAssoName(animal.asso);
+  return assos.find(asso => {
+    const assoName = normalizeAssoName(asso.name);
+    return assoName === animalName || assoName.includes(animalName) || animalName.includes(assoName);
+  }) || null;
+}
+function buildAssoContactPills(asso){
+  if(!asso) return `<span class="linkpill disabled">ℹ️ ${t('animal.notProvided')}</span>`;
+  const pills = [];
+  if(!isMissingInfo(asso.link)) pills.push(`<a class="linkpill" href="${asso.link}" target="_blank" rel="noopener">🌐 Site / infos</a>`);
+  if(!isMissingInfo(asso.facebook)) pills.push(`<a class="linkpill" href="${asso.facebook}" target="_blank" rel="noopener">📘 Facebook</a>`);
+  if(!isMissingInfo(asso.email)){
+    const emails = String(asso.email).split(/\n+/).map(v => v.trim()).filter(Boolean);
+    const mailto = emails.join(',');
+    pills.push(`<a class="linkpill" href="mailto:${mailto}">✉️ Email</a>`);
+  }
+  if(!isMissingInfo(asso.tel)) pills.push(`<span class="linkpill">📞 ${asso.tel}</span>`);
+  return pills.length ? pills.join('') : `<span class="linkpill disabled">ℹ️ ${t('animal.notProvided')}</span>`;
+}
+
 function openModal(name){
   const a = animals.find(x => x.name === name);
   if(!a) return;
+  const asso = findAssociationByAnimal(a);
+  const contactPills = buildAssoContactPills(asso);
 
-  document.getElementById('modalBody').innerHTML = `<div class="modal-grid"><div class="modal-media"><img src="${a.photo}" alt="${a.name}" /></div><div><h2 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:2.1rem">${a.name}</h2><div class="tags" style="margin-top:14px"><span class="tag">${speciesLabel(a.species)}</span><span class="tag">${a.gender} ${ageLabel(a.age)}</span><span class="tag">${lang==='fr' ? a.race_fr : a.race_co}</span>${a.urgent ? `<span class="tag">🔴 ${t('chip.urgent')}</span>` : ''}</div><p style="color:var(--muted);line-height:1.8">${lang==='fr' ? a.desc_fr : a.desc_co} ${t('animal.standard')}</p><div style="font-weight:800;margin:18px 0 8px">${t('animal.partner')}</div><div class="card" style="padding:14px 16px;border-radius:20px"><div style="font-weight:800">${a.asso}</div><div class="small">📍 ${a.area}</div></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn" style="background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff">${t('animal.contact')}</button><button class="btn" style="background:#fff;color:var(--primary);border:1px solid rgba(35,31,32,.08)" onclick="closeModalDirect()">${t('animal.close')}</button></div></div></div>`;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-grid">
+      <div class="modal-media"><img src="${a.photo}" alt="${a.name}" /></div>
+      <div>
+        <h2 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:2.1rem">${a.name}</h2>
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">${speciesLabel(a.species)}</span>
+          <span class="tag">${a.gender} ${ageLabel(a.age)}</span>
+          <span class="tag">${lang==='fr' ? a.race_fr : a.race_co}</span>
+          ${a.urgent ? `<span class="tag">🔴 ${t('chip.urgent')}</span>` : ''}
+        </div>
+        <p style="color:var(--muted);line-height:1.8">${lang==='fr' ? a.desc_fr : a.desc_co} ${t('animal.standard')}</p>
+
+        <div style="font-weight:800;margin:18px 0 8px">${t('animal.partner')}</div>
+        <div class="card" style="padding:14px 16px;border-radius:20px">
+          <div style="font-weight:800">${a.asso}</div>
+          <div class="small">📍 ${a.area}</div>
+          <div class="assoc-links" style="padding-top:10px;margin-top:10px">${contactPills}</div>
+        </div>
+      </div>
+    </div>`;
+
   document.getElementById('modalBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeModal(e){if(e.target.id === 'modalBackdrop') closeModalDirect()}
 function closeModalDirect(){document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''}
 
