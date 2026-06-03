@@ -141,12 +141,13 @@ section{padding:30px 0 70px}
 .step p{margin:0;color:rgba(255,255,255,.76);line-height:1.7;font-size:.92rem}
 .modal-backdrop{position:fixed;inset:0;display:none;place-items:center;background:rgba(9,16,28,.56);backdrop-filter:blur(8px);z-index:140;padding:20px}
 .modal-backdrop.open{display:grid}
-.modal{width:min(840px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.24);padding:22px}
+.modal{overscroll-behavior:contain;overflow-x:auto;overflow-y:auto}
+.modal{width:1000px;min-width:1000px;height:720px;min-height:720px;max-width:none;max-height:none;overflow:auto;background:#fff;border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.24);padding:22px}
 .close{position:sticky;top:0;margin-left:auto;width:42px;height:42px;border-radius:50%;border:none;background:rgba(21,34,48,.06);font-size:1rem;cursor:pointer}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.modal-media{border-radius:24px;overflow:hidden;min-height:320px;background:#e6ecf3}
+.modal-grid{display:grid;grid-template-columns:520px 1fr;gap:18px;min-width:920px}
+.modal-media{border-radius:24px;overflow:hidden;min-height:420px;height:100%;background:#e6ecf3}
 .modal-media img{width:100%;height:100%;object-fit:cover}
-.modal-carousel{position:relative;height:100%;min-height:320px;background:#e6ecf3;border-radius:24px;overflow:hidden}
+.modal-carousel{position:relative;height:100%;min-height:420px;background:#e6ecf3;border-radius:24px;overflow:hidden}
 .modal-track{display:flex;height:100%;transition:transform .38s cubic-bezier(.22,.61,.36,1)}
 .modal-slide{min-width:100%;height:100%;position:relative;background:#e6ecf3}
 .modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
@@ -163,7 +164,7 @@ section{padding:30px 0 70px}
 .carousel-dot.active{width:24px;height:7px;border-radius:999px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18)}
 @media (hover:none){.carousel-nav{opacity:1;background:rgba(255,255,255,.18)}}
 @media (max-width:1100px){
-  .search-grid,.modal-grid{grid-template-columns:1fr}
+  .search-grid{grid-template-columns:1fr}
   .stats,.animals,.assoc-grid,.vol-grid,.steps{grid-template-columns:repeat(2,1fr)}
   .hero-copy{min-height:680px;background-position:63% center}
 }
@@ -212,9 +213,9 @@ section{padding:30px 0 70px}
   .steps{padding:18px}
   .step{padding:18px}
   .modal-backdrop{padding:10px}
-  .modal{padding:16px;border-radius:22px;max-height:calc(100vh - 20px)}
-  .modal-grid{grid-template-columns:1fr}
-  .modal-media{min-height:220px}
+  .modal{padding:22px;border-radius:30px;max-height:none;width:1000px;min-width:1000px;height:720px;min-height:720px}
+  .modal-grid{grid-template-columns:520px 1fr;min-width:920px}
+  .modal-media{min-height:420px}
 }
   
 
