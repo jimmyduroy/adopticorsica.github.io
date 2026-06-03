@@ -123,6 +123,10 @@ section{padding:30px 0 70px}
 .assoc h3,.vol h3{margin:0 0 5px;font-size:1.05rem}
 .small{font-size:.84rem;color:var(--muted)}
 .assoc p,.vol p{color:var(--muted);line-height:1.7;font-size:.93rem}
+.vol-asso-title{display:block;margin-top:14px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+.vol-assos{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.vol-asso-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,rgba(11,41,65,.08),rgba(191,75,60,.12));border:1px solid rgba(11,41,65,.10);color:var(--primary);font-size:.84rem;font-weight:800;box-shadow:0 8px 20px rgba(16,47,73,.08)}
+.vol-asso-pill::before{content:'👉';font-size:.92rem;line-height:1}
 .assoc-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .linkpill{padding:9px 11px;border-radius:14px;background:rgba(21,34,48,.05);font-size:.84rem;font-weight:700;color:var(--primary)}
 .band{background:linear-gradient(135deg,#0f1723,#13283f 55%, #10253d);color:#fff;border-radius:28px;box-shadow:var(--shadow-md);overflow:hidden;position:relative}
@@ -545,9 +549,9 @@ const assos = [
   }
 ];
 const benevoles = [
-  {type:'famille',title_fr:'Famille d’accueil chatons',title_co:'Famiglia d’accogliu gattini',desc_fr:'Accueillir temporairement un ou plusieurs jeunes profils avant adoption.',desc_co:'Accoglie à tempu unu o parechji profili ghjovani nanzu à l’adozione.'},
-  {type:'transport',title_fr:'Transport vétérinaire',title_co:'Trasportu veterinariu',desc_fr:'Aider les associations pour les allers-retours vers les cliniques partenaires.',desc_co:'Aiutà l’associi per l’andate è e venute versu e cliniche partenarie.'},
-  {type:'nourrissage',title_fr:'Suivi de colonies libres',title_co:'Seguitu di culonie libare',desc_fr:'Participer au nourrissage et au repérage de chats libres sur secteur.',desc_co:'Participà à u nutrimentu è à u ripèru di gatti libari nantu à u settore.'}
+  {type:'famille',title_fr:'Famille d’accueil chatons',title_co:'Famiglia d’accogliu gattini',desc_fr:'Accueillir temporairement un ou plusieurs jeunes profils avant adoption.',desc_co:'Accoglie à tempu unu o parechji profili ghjovani nanzu à l’adozione.',assos:["Les Chats de l'Île"]},
+  {type:'transport',title_fr:'Transport vétérinaire',title_co:'Trasportu veterinariu',desc_fr:'Aider les associations pour les allers-retours vers les cliniques partenaires.',desc_co:'Aiutà l’associi per l’andate è e venute versu e cliniche partenarie.',assos:["Les Chats de l'Île","SPA Ajaccio","Les Sans Colliers de Corse"]},
+  {type:'nourrissage',title_fr:'Suivi de colonies libres',title_co:'Seguitu di culonie libare',desc_fr:'Participer au nourrissage et au repérage de chats libres sur secteur.',desc_co:'Participà à u nutrimentu è à u ripèru di gatti libari nantu à u settore.',assos:["Les Chats de l'Île","Des Z'amours de Chats"]}
 ];
 
 let lang='fr';
@@ -645,9 +649,23 @@ function renderAssos(){
 }
 
 function renderVol(){
-  document.getElementById('volGrid').innerHTML = benevoles.map(v =>
-    `<article class="card vol"><div class="tag" style="display:inline-flex">${typeLabel(v.type)}</div><h3>${lang==='fr' ? v.title_fr : v.title_co}</h3><p>${lang==='fr' ? v.desc_fr : v.desc_co}</p></article>`
-  ).join('');
+  document.getElementById('volGrid').innerHTML = benevoles.map(function(v){
+    var desc = lang==='fr' ? v.desc_fr : v.desc_co;
+    var assosHtml = '';
+    if(Array.isArray(v.assos) && v.assos.length){
+      var title = lang==='fr' ? 'Associations concernées' : 'Associi cuncernate';
+      assosHtml = '<div class="vol-asso-title">' + title + '</div>' +
+                  '<div class="vol-assos">' +
+                  v.assos.map(function(name){ return '<span class="vol-asso-pill">' + name + '</span>'; }).join('') +
+                  '</div>';
+    }
+    return '<article class="card vol">' +
+      '<div class="tag" style="display:inline-flex">' + typeLabel(v.type) + '</div>' +
+      '<h3>' + (lang==='fr' ? v.title_fr : v.title_co) + '</h3>' +
+      '<p>' + desc + '</p>' +
+      assosHtml +
+      '</article>';
+  }).join('');
 }
 
 function renderSteps(){
