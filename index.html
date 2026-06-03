@@ -197,6 +197,183 @@ section{padding:30px 0 70px}
   .modal-grid{grid-template-columns:1fr}
   .modal-media{min-height:220px}
 }
+  
+
+/* ===== Mode mise en page fixe + ascenseur horizontal ===== */
+html{
+  overflow-x:auto !important;
+}
+body{
+  overflow-x:auto !important;
+  min-width:1280px;
+}
+.container{
+  width:min(calc(100% - 30px), var(--max)) !important;
+  min-width:1210px;
+  margin:0 auto;
+}
+.topbar{
+  min-width:1280px;
+}
+.nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:18px !important;
+  min-height:88px !important;
+  padding:0 !important;
+}
+.brand{
+  display:flex !important;
+  align-items:center !important;
+  gap:18px !important;
+  min-width:0 !important;
+}
+.brand img{
+  height:68px !important;
+}
+.brand-copy{
+  display:flex !important;
+  flex-direction:column !important;
+}
+.nav-links{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:24px !important;
+  flex-wrap:nowrap !important;
+  width:auto !important;
+}
+.nav-links a{
+  font-size:.95rem !important;
+}
+.lang{
+  margin-left:0 !important;
+}
+.hero{
+  padding:0 0 34px !important;
+}
+.hero-copy{
+  min-height:560px !important;
+  background-position:center center !important;
+  border-radius:0 0 26px 26px !important;
+}
+.hero-inner{
+  padding:78px 44px 150px !important;
+  max-width:none !important;
+}
+.hero-text{
+  max-width:620px !important;
+  min-height:320px !important;
+}
+h1{
+  max-width:620px !important;
+  font-size:clamp(3rem,6vw,5rem) !important;
+  line-height:.94 !important;
+}
+h1::before{
+  font-size:clamp(1.5rem,2.4vw,2.3rem) !important;
+  margin-bottom:14px !important;
+}
+.hero-sub{
+  margin-top:22px !important;
+  max-width:430px !important;
+  font-size:1.08rem !important;
+  line-height:1.58 !important;
+}
+.search-shell{
+  position:absolute !important;
+  left:44px !important;
+  right:44px !important;
+  bottom:12px !important;
+  margin-top:34px !important;
+  border-radius:24px !important;
+}
+.search-shell::before{
+  padding:16px 24px 0 !important;
+  font-size:1.05rem !important;
+}
+.search-shell::after{
+  padding:0 24px 10px !important;
+}
+.search-grid{
+  display:grid !important;
+  grid-template-columns:1.2fr .78fr .78fr .85fr 1fr !important;
+  gap:10px !important;
+  padding:0 24px 18px !important;
+}
+.field,.select{
+  height:48px !important;
+  font-size:inherit !important;
+}
+.section-head{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:flex-end !important;
+  justify-content:space-between !important;
+  gap:16px !important;
+  margin-bottom:22px !important;
+}
+.adopt-actions{
+  width:auto !important;
+  justify-content:flex-end !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  margin:0 0 18px !important;
+}
+.adopt-filter-btn{
+  flex:0 0 auto !important;
+  min-height:unset !important;
+}
+.stats,.animals,.assoc-grid,.vol-grid{
+  grid-template-columns:repeat(3,1fr) !important;
+}
+.steps{
+  grid-template-columns:repeat(4,1fr) !important;
+  padding:32px !important;
+}
+.card{
+  padding:15px !important;
+  border-radius:24px !important;
+}
+.animal-media{
+  height:250px !important;
+}
+.animal-desc{
+  min-height:78px !important;
+}
+.animal-bottom{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+}
+.mini-btn{
+  width:auto !important;
+}
+.assoc-links{
+  gap:10px !important;
+}
+.linkpill{
+  width:auto !important;
+  text-align:left !important;
+}
+.modal-backdrop{
+  padding:20px !important;
+}
+.modal{
+  padding:22px !important;
+  border-radius:30px !important;
+  max-height:calc(100vh - 40px) !important;
+}
+.modal-grid{
+  grid-template-columns:1fr 1fr !important;
+}
+.modal-media{
+  min-height:320px !important;
+}
+
   </style>
 </head>
 <body>
@@ -642,7 +819,7 @@ function renderAssos(){
       a.link ? `<a class="linkpill" href="${a.link}" target="_blank" rel="noopener">🌐 Site / infos</a>` : '',
       a.facebook ? `<a class="linkpill" href="${a.facebook}" target="_blank" rel="noopener">📘 Facebook</a>` : '',
       a.email ? `<a class="linkpill" href="mailto:${a.email}">✉️ Email</a>` : '',
-      a.tel ? `<a class="linkpill" href="tel:${a.tel.replace(/\s+/g,'')}">📞 ${a.tel}</a>` : ''
+      a.tel ? `<span class="linkpill">📞 ${a.tel}</span>` : ''
     ].filter(Boolean).join('');
     return `<article class="card assoc"><div class="assoc-head"><div class="asso-icon ${iconData.cls}">${iconData.html}</div><div class="assoc-name-wrap"><h3>${a.name}</h3><div class="small">${infos || ''}${a.followers && a.followers !== '—' ? ` · FB ${a.followers}` : ''}</div>${meta ? `<div class="small" style="margin-top:4px">${meta}</div>` : ''}</div></div>${a.adresse ? `<p><strong>${lang==='fr' ? 'Adresse' : 'Indirizzu'} :</strong> ${a.adresse}</p>` : ''}<p>${lang==='fr' ? a.desc_fr : a.desc_co}</p><div class="assoc-links">${links}</div></article>`;
   }).join('');
