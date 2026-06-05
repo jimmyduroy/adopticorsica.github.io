@@ -1050,7 +1050,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keydown', e => { const modalOpen = document.getElementById('modalBackdrop').classList.contains('open'); if(e.key === 'Escape') closeModalDirect(); if(!modalOpen) return; const prev = document.querySelector('.carousel-nav.prev'); const next = document.querySelector('.carousel-nav.next'); if(e.key === 'ArrowLeft' && prev) prev.click(); if(e.key === 'ArrowRight' && next) next.click(); });
 </script>
 
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a0ba6e55cecb45ea9d35990eebbd55f5"}'></script><!-- End Cloudflare Web Analytics -->
+<script> data-goatcounter="https://jimmyduroy.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
