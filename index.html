@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adopti Corsica</title>
   <style>
@@ -84,6 +85,10 @@ h1::before{content:var(--hero-prefix, "Ensemble, offrons-leur");display:block;fo
 .hero-sub{margin:22px 0 0;max-width:430px;color:#3f3735;font-size:1.08rem;line-height:1.58}
 .hero-text{max-width:620px;min-height:320px}
 .hero-sub em{color:var(--accent)}
+.hero-stats{display:flex;gap:2.6rem;margin:28px 0 0}
+.stat-item{text-align:left}
+.stat-num{font-family:Georgia,'Times New Roman',serif;font-size:2.3rem;font-weight:700;color:var(--accent);display:block;line-height:1}
+.stat-label{display:block;margin-top:6px;font-size:.82rem;color:#4a423e;font-weight:600;letter-spacing:.01em}
 .search-shell{
   margin-top:34px;padding:0;border-radius:24px;background:linear-gradient(135deg,#07243a,#0d304b 64%, #123955);
   border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 46px rgba(7,36,58,.26);
@@ -149,6 +154,10 @@ section{padding:30px 0 70px}
 .modal-slide{min-width:100%;height:100%;position:relative;background:#e6ecf3}
 .modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
 .modal-slide img,.modal-slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.modal-slide iframe{width:100%;height:100%;display:block;border:0;background:#000}
+.yt-slide{cursor:pointer}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:2px solid rgba(255,255,255,.85);font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:background .2s,transform .2s}
+.yt-play:hover{background:rgba(191,75,60,.85);transform:translate(-50%,-50%) scale(1.08)}
 .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:1px solid rgba(255,255,255,.32);border-radius:50%;cursor:pointer;z-index:3;background:rgba(255,255,255,.12);color:#fff;font-size:1.45rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease}
 .modal-carousel:hover .carousel-nav{opacity:1}
 .carousel-nav:hover{background:rgba(255,255,255,.24);box-shadow:0 14px 32px rgba(0,0,0,.20)}
@@ -188,6 +197,8 @@ section{padding:30px 0 70px}
   h1{max-width:100%;font-size:clamp(2.55rem,12vw,4rem);line-height:.95}
   h1::before{font-size:clamp(1.3rem,6vw,1.9rem);margin-bottom:10px}
   .hero-sub{margin-top:16px;max-width:100%;font-size:1rem;line-height:1.5}
+  .hero-stats{gap:1.6rem;margin-top:20px}
+  .stat-num{font-size:1.8rem}
   .search-shell{position:relative;left:auto;right:auto;bottom:auto;margin-top:22px;border-radius:22px}
   .search-shell::before{padding:14px 16px 0;font-size:.98rem}
   .search-shell::after{padding:0 16px 10px}
@@ -400,7 +411,7 @@ h1::before{
         <img src="adopti_corsica_logo.png" alt="Logo Adopti Corsica" />
         <div class="brand-copy">
           <strong data-i18n="brand.title">Adopti Corsica</strong>
-          <span data-i18n="brand.sub">Aide à l’adoption animale en Corse</span>
+          <span data-i18n="brand.sub">Aide à l’adoption animale en Corse (Région d'Ajaccio)</span>
         </div>
       </a>
       <div class="nav-links">
@@ -423,6 +434,16 @@ h1::before{
             <div class="hero-text">
 <h1 data-i18n="hero.title">une<br>nouvelle vie</h1>
             <p class="hero-sub" data-i18n="hero.sub">Adoptez un compagnon et faites la différence. <em><br>L’amore ùn hà micca prezzu.<br></em></p>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-num" id="counter-animaux">0</span>
+                <span class="stat-label" data-i18n="hero.stat1">animaux à adopter</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num" id="counter-assos">0</span>
+                <span class="stat-label" data-i18n="hero.stat2">associations partenaires</span>
+              </div>
+            </div>
             </div>
 
             <div class="search-shell" id="search">
@@ -466,7 +487,7 @@ h1::before{
           <div>
             <div class="eyebrow" data-i18n="assos.eyebrow">🤝 Réseau local</div>
             <h2 data-i18n="assos.title">Nos Associations Partenaires</h2>
-            <p data-i18n="assos.sub">Retrouvez les 11 associations de protection animale partenaires.</p>
+            <p data-i18n="assos.sub">Retrouvez les {n} associations de protection animale partenaires.</p>
           </div>
         </div>
         <div class="assoc-grid" id="assosGrid"></div>
@@ -505,15 +526,16 @@ h1::before{
 <script>
 const i18n = {
   fr:{
-    'brand.title':'Adopti Corsica','brand.sub':'Aide à l\'adoption animale en Corse',
+    'brand.title':'Adopti Corsica','brand.sub':'Aide à l\'adoption animale en Corse (Région d\'Ajaccio)',
     'nav.animals':'Animaux','nav.assos':'Associations','nav.volunteer':'Bénévolat',
     'hero.prefix':'Ensemble, offrons-leur',
     'hero.title':'une<br>nouvelle vie',
     'hero.sub':'Adoptez un compagnon et faites la différence. <em><br>L\'amore ùn hà micca prezzu.</em>',
+    'hero.stat1':'animaux à adopter','hero.stat2':'associations partenaires',
     'search.placeholder':'Nom, race, association…','search.allSpecies':'Toutes espèces','search.cat':'🐱 Chat','search.dog':'🐶 Chien','search.allAges':'Tous les âges','search.young':'Chaton / Chiot','search.adult':'Adulte','search.senior':'Senior','search.allGenders':'Sexe','search.female':'Femelle ♀','search.male':'Mâle ♂','search.allAreas':'Toutes zones','search.allAssociations':'Toutes associations',
     'chip.urgent':'Urgence',
     'animals.eyebrow':'🐾 À adopter','animals.title':'Ils n\'attendent que vous','animals.sub':'Tous les animaux proposés à l\'adoption par nos associations partenaires en Corse du Sud.','animals.urgentBtn':'Urgence','animals.allBtn':'Tous',
-    'assos.eyebrow':'🤝 Réseau local','assos.title':'Nos Associations Partenaires','assos.sub':'Retrouvez les 11 associations de protection animale partenaires.',
+    'assos.eyebrow':'🤝 Réseau local','assos.title':'Nos Associations Partenaires','assos.sub':'Retrouvez les {n} associations de protection animale partenaires.',
     'steps.eyebrow':'✨ Comment ça marche','steps.title':'Adopter, c\'est simple','steps.sub':'Quelques étapes pour accueillir un compagnon et changer leur vie et la votre.',
     'vol.eyebrow':'💛 Bénévolat','vol.title':'Donnez de votre temps','vol.sub':'Les associations ont besoin de vous : familles d\'accueil, transport, nourrissage…',
     'animal.view':'Voir la fiche','animal.contact':'Contacter','animal.close':'Fermer','animal.partner':'Association responsable','animal.standard':'Le dossier d\'adoption et le premier échange se font directement avec l\'association indiquée.','animal.contactInfo':'Coordonnées de l\'association','animal.notProvided':'Non communiqué',
@@ -526,15 +548,16 @@ const i18n = {
     'types.famille':'🏠 Famille d\'accueil','types.transport':'🚗 Transport','types.nourrissage':'🍽️ Nourrissage'
   },
   co:{
-    'brand.title':'Adopti Corsica','brand.sub':'Aiutu à l\'adozione animale in Corsica',
+    'brand.title':'Adopti Corsica','brand.sub':'Aiutu à l\'aduzzione d\'animali in Corsica (Regione d\'Aiacciu)',
     'nav.animals':'Animali','nav.assos':'Associi','nav.volunteer':'Voluntariatu',
     'hero.prefix':'Inseme, offremu li',
     'hero.title':'una<br>nova vita',
     'hero.sub':'Aduttate un cumpagnu è fate a differenza. <em><br>L\'amore ùn hà micca prezzu.</em>',
+    'hero.stat1':'animali da aduttà','hero.stat2':'associi partenarie',
     'search.placeholder':'Nome, razza, assuciazione…','search.allSpecies':'Tutte e spezie','search.cat':'🐱 Gattu','search.dog':'🐶 Cane','search.allAges':'Tutte l\'età','search.young':'Gattinu / Cagnolu','search.adult':'Adultu','search.senior':'Seniore','search.allGenders':'Sessu','search.female':'Femella ♀','search.male':'Masciu ♂','search.allAreas':'Tutte e zone','search.allAssociations':'Tutte l\'associi',
     'chip.urgent':'Urgenza',
     'animals.eyebrow':'🐾 Da aduttà','animals.title':'Ùn aspettanu chè voi','animals.sub':'Tutti l\'animali pruposti à l\'adozione da e nostre associi partenarie in Corsica Suttana.','animals.urgentBtn':'Urgenza','animals.allBtn':'Tutti',
-    'assos.eyebrow':'🤝 Reta lucale','assos.title':'E nostre associi partenarie','assos.sub':'Truvate e 11 associi partenarie di prutezzione animale.',
+    'assos.eyebrow':'🤝 Reta lucale','assos.title':'E nostre associi partenarie','assos.sub':'Truvate e {n} associi partenarie di prutezzione animale.',
     'steps.eyebrow':'✨ Cumu funziona','steps.title':'Aduttà hè simplice','steps.sub':'Qualchì tappa per accoglie un cumpagnu è cambià a so vita è a vostra.',
     'vol.eyebrow':'💛 Voluntariatu','vol.title':'Date di u vostru tempu','vol.sub':'L\'associi anu bisognu di voi : famiglie d\'accogliu, trasportu, nutrimentu…',
     'animal.view':'Vede a scheda','animal.contact':'Cuntattà','animal.close':'Chjode','animal.partner':'Assuciazione rispunsevule','animal.standard':'U cartulare d\'adozione è u primu scambiu si facenu direttamente cù l\'assuciazione indicata.','animal.contactInfo':'Cuntatti di l\'assuciazione','animal.notProvided':'Micca cumunicatu',
@@ -549,191 +572,54 @@ const i18n = {
 };
 
 const animals = [
-  {name:'Luna',species:'chat',age:'chaton',gender:'♀',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/1280px-Cute_grey_kitten.jpg',medias:[{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/1280px-Cute_grey_kitten.jpg',alt:'Luna photo 1'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gustav_chocolate.jpg/1280px-Gustav_chocolate.jpg',alt:'Luna photo 2'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/1280px-Felis_catus-cat_on_snow.jpg',alt:'Luna photo 3'}],race_fr:'Chaton européen gris',race_co:'Gattinu europeu grisgiu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Les Chats de l\'Île'},
-  {name:'Rocky',species:'chien',age:'adulte',gender:'♂',area:'Sarrola-Carcopino',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/MiloSmet.JPG/1200px-MiloSmet.JPG',medias:[{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/MiloSmet.JPG/1200px-MiloSmet.JPG',alt:'Rocky photo 1'},{type:'image',src:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',alt:'Rocky photo 2'},{type:'video',src:'https://www.w3schools.com/html/mov_bbb.mp4',poster:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',alt:'Rocky vidéo'}],race_fr:'Beagle croisé',race_co:'Beagle incrociu',desc_fr:'Chien équilibré et proche de l\'humain.',desc_co:'Cane equilibratu è vicinu à l\'umanu.',asso:'Les Sans Colliers de Corse'},
-  {name:'Milo',species:'chat',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/2560px-Cat_August_2010-4.jpg',race_fr:'Chat tigré',race_co:'Gattu tigratu',desc_fr:'Profil calme et rassurant.',desc_co:'Prufilu calmu è rassicurante.',asso:'Des Z\'amours de Chats'},
-  {name:'Bella',species:'chien',age:'senior',gender:'♀',area:'Ajaccio',urgent:true,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/9/95/Bronco_the_Beagle.JPG',race_fr:'Beagle senior',race_co:'Beagle seniore',desc_fr:'Chien équilibré et proche de l\'humain.',desc_co:'Cane equilibratu è vicinu à l\'umanu.',asso:'SPA Ajaccio'},
-  {name:'Nox',species:'chat',age:'chaton',gender:'♂',area:'Porticcio',urgent:false,fiv:false,photo:'https://upload.wikimedia.org/wikipedia/commons/6/6f/Tuxedo_kitten.jpg',race_fr:'Chaton noir et blanc',race_co:'Gattinu neru è biancu',desc_fr:'Jeune chaton curieux, sociable et très photogénique.',desc_co:'Gattinu giovanu curiosu, suciale è assai fotogenicu.',asso:'Chats Séniors Adoptions 20'},
-  {name:'Shumi',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',medias:[{type:'image',src:'Shumi.jpg',alt:'Shumi photo 1'},{type:'image',src:'Shumi.jpg',alt:'Shumi photo 2'},{type:'video',src:'Shumi (1).mov',poster:'Shumi_video1.jpg',alt:'Shumi vidéo'}],race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
-  {name:'Shumi2',species:'chien',age:'adulte',gender:'♂',area:'Ajaccio',urgent:false,fiv:false,photo:'Shumi.jpg',race_fr:'Croisé Berger',race_co:'Incrociu neru',desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br>',asso:'S.C.D.A. - Refuge Caldaniccia'},
+  {
+name:'Shumi',
+species:'chien',
+age:'adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.jpg',alt:'Shumi photo 1'},
+{type:'video',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.mov',poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video.jpg',alt:'Shumi vidéo1'},
+{type:'youtube', src:'https://www.youtube.com/shorts/_M3CUr2g5Vs', poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video.jpg', alt:'Shumi vidéo2'},
+],
+race_fr:'Croisé Berger',
+race_co:'Incrociu neru',
+desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',
+desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
 ];
 
 const assos = [
   {
-    "name": "La Société Protectrice des Animaux (SPA)",
-    "icon": "🐶",
-    "loc": "",
-    "distance": "",
-    "type": "",
-    "statut": "",
-    "adresse": "18 cours Général Leclerc, 20000 Ajaccio",
-    "tel": "04 95 28 13 04",
-    "email": "ajaccio@la-spa.fr\njr.battesti@la-spa.fr",
-    "followers": "—",
-    "desc_fr": "Chats : Recueil chats errants, soins vétérinaires, adoption Chiens : Recueil chiens errants, soins vétérinaires, adoption Autres : Lutte contre la maltraitance, signalement, sensibilisation Notes : Maison SPA — fonctionne en réseau de familles d'accueil",
-    "desc_co": "Gatti : Recueil chats errants, soins vétérinaires, adoption Cani : Recueil chiens errants, soins vétérinaires, adoption Altre azzione : Lutte contre la maltraitance, signalement, sensibilisation Note : Maison SPA — fonctionne en réseau de familles d'accueil",
-    "link": "https://www.la-spa.fr/ajaccio",
-    "facebook": ""
-  },
-  {
     "name": "S.C.D.A. - Refuge Caldaniccia",
     "icon": "🐶",
     "loc": "Ajaccio",
-    "distance": "0 km",
     "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Z.I, 20167 Sarrola-Carcopino",
+    "adresse": "Route de Caldaniccia, Z.I de Baleone, Sarrola-Carcopino (20167)",
     "tel": "06 03 58 63 83",
     "email": "refugecaldaniccia@gmail.com",
-    "followers": "—",
-    "desc_fr": "Chiens : Abandon adoption chiens",
-    "desc_co": "Cani : Abandon adoption chiens",
+    "desc_fr": "Hébergement, abandon, adoption de chiens uniquement",
+    "desc_co": "Alloghju, abbandonu, aduzzione di cani solu",
     "link": "",
-    "facebook": "https://fr-fr.facebook.com/refugedecaldaniccia.decaldaniccia"
-  },
-  {
-    "name": "Les Chats de l'Île",
-    "icon": "🐱",
-    "loc": "Ajaccio",
-    "distance": "0 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Ajaccio (sans refuge fixe)",
-    "tel": "06 12 56 60 95",
-    "email": "contact@leschatsdelile.fr",
-    "followers": "~12 750",
-    "desc_fr": "Chats : Stérilisation, identification (puce/tatouage), soins vétérinaires, adoption de chats sociables, statut 'chat libre' Autres : Sensibilisation à l'abandon, prévention de la maltraitance Notes : Association reconnue d'intérêt général",
-    "desc_co": "Gatti : Stérilisation, identification (puce/tatouage), soins vétérinaires, adoption de chats sociables, statut 'chat libre' Altre azzione : Sensibilisation à l'abandon, prévention de la maltraitance Note : Association reconnue d'intérêt général",
-    "link": "https://www.helloasso.com/associations/association-les-chats-de-l-ile",
-    "facebook": "https://www.facebook.com/p/Les-Chats-de-LIle-100064502297691/"
-  },
-  {
-    "name": "Des Z'amours de Chats",
-    "icon": "🐱",
-    "loc": "Ajaccio",
-    "distance": "0 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "67 allée de la Gravona, 20167 Ajaccio",
-    "tel": "06 20 47 04 32",
-    "email": "associationdeszamoursdechats@gmail.com",
-    "followers": "14 000",
-    "desc_fr": "Chats : Stérilisation, identification, sauvetage, adoption de chats et chatons Autres : Actions sans subvention ni aide publique, uniquement via dons et bénévoles Notes : Active depuis 2016 sur Ajaccio",
-    "desc_co": "Gatti : Stérilisation, identification, sauvetage, adoption de chats et chatons Altre azzione : Actions sans subvention ni aide publique, uniquement via dons et bénévoles Note : Active depuis 2016 sur Ajaccio",
-    "link": "",
-    "facebook": "https://www.facebook.com/associationdeszamoursdechats/"
-  },
-  {
-    "name": "SAM Les P'tits Loups",
-    "icon": "🐾",
-    "loc": "Ajaccio",
-    "distance": "0 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "18 rue du Docteur Del Pellegrino, 20090 Ajaccio",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "—",
-    "desc_fr": "Chats : Recueil chats abandonnés (âgés/handicapés), soins, adoption Chiens : Recueil chiens abandonnés (âgés/handicapés), soins, adoption Autres : Prise en charge animaux avec besoins spéciaux Notes : Association historique d'Ajaccio (depuis 1998)",
-    "desc_co": "Gatti : Recueil chats abandonnés (âgés/handicapés), soins, adoption Cani : Recueil chiens abandonnés (âgés/handicapés), soins, adoption Altre azzione : Prise en charge animaux avec besoins spéciaux Note : Association historique d'Ajaccio (depuis 1998)",
-    "link": "",
-    "facebook": ""
-  },
-  {
-    "name": "Chats Séniors Adoptions 20",
-    "icon": "🐱",
-    "loc": "Alata",
-    "distance": "~10 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Alata, 20167",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "—",
-    "desc_fr": "Chats : Adoption des chats âgés (séniors) et chats FIV/FeLV+, stérilisation, identification, suivi sanitaire Autres : Spécialisation chats difficiles à placer (âge, maladie) Notes : Reconnue d'intérêt général",
-    "desc_co": "Gatti : Adoption des chats âgés (séniors) et chats FIV/FeLV+, stérilisation, identification, suivi sanitaire Altre azzione : Spécialisation chats difficiles à placer (âge, maladie) Note : Reconnue d'intérêt général",
-    "link": "https://www.helloasso.com/associations/chats-seniors-adoptions-20",
-    "facebook": ""
-  },
-  {
-    "name": "Les Chats du Maquis",
-    "icon": "🐱",
-    "loc": "Appietto",
-    "distance": "~15 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "25D résidence Golfe de Lava, 20167 Appietto",
-    "tel": "04 95 22 76 64",
-    "email": "Non communiqué",
-    "followers": "—",
-    "desc_fr": "Chats : Protection chats errants, stérilisation, marquage, nourrissage, abris, adoption chatons Autres : Suivi sanitaire chats libres Notes : Association en veille suite au décès de sa présidente",
-    "desc_co": "Gatti : Protection chats errants, stérilisation, marquage, nourrissage, abris, adoption chatons Altre azzione : Suivi sanitaire chats libres Note : Association en veille suite au décès de sa présidente",
-    "link": "http://leschatsdumaquis.eklablog.net",
-    "facebook": ""
-  },
-  {
-    "name": "Les Sans Colliers de Corse",
-    "icon": "🐾",
-    "loc": "Sarrola-Carcopino",
-    "distance": "~15 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Lieu-dit Caparone, 20167 Sarrola-Carcopino",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "24 700",
-    "desc_fr": "Chats : Stérilisation, identification, soins, nourrissage quotidien, adoption chatons, familles d'accueil Chiens : Sauvetage chiens errants, soins, adoption Autres : Projet refuge 'L'Arche de Nina', aide à divers animaux (âne, brebis, chevaux, oiseaux...) Notes : Pas de refuge fixe — fonctionne en familles d'accueil. Projet de refuge en cours de financement.",
-    "desc_co": "Gatti : Stérilisation, identification, soins, nourrissage quotidien, adoption chatons, familles d'accueil Cani : Sauvetage chiens errants, soins, adoption Altre azzione : Projet refuge 'L'Arche de Nina', aide à divers animaux (âne, brebis, chevaux, oiseaux...) Note : Pas de refuge fixe — fonctionne en familles d'accueil. Projet de refuge en cours de financement.",
-    "link": "https://lessanscollierscorse.wixsite.com/lessanscollierscorse",
-    "facebook": "https://www.facebook.com/LesSansColliersDeCorse/"
+    "facebook": "https://www.facebook.com/refugedecaldaniccia.decaldaniccia"
   },
   {
     "name": "L'Arche des Animaux",
     "icon": "🐾",
-    "loc": "Sarrola-Carcopino",
-    "distance": "~15 km",
+    "loc": "Ajaccio",
     "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Sarrola-Carcopino, 20167",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "Non public",
-    "desc_fr": "Chats : Hébergement, soins, stérilisation, identification, adoption chats Chiens : Hébergement, soins, stérilisation, identification, adoption chiens Autres : Accueil animaux de toutes espèces",
-    "desc_co": "Gatti : Hébergement, soins, stérilisation, identification, adoption chats Cani : Hébergement, soins, stérilisation, identification, adoption chiens Altre azzione : Accueil animaux de toutes espèces Note : Refuge physique — l'un des rares de la région ajaccienne",
+    "adresse": "Z.I de Baleone, Sarrola-Carcopino (20167)",
+    "tel": "06 98 03 16 04",
+    "email": "larchedesanimaux2a@gmail.com",
+    "desc_fr": "Hébergement, soins, stérilisation, identification, adoption de chats uniquement",
+    "desc_co": "Alloghju, cure, sterilizazione, identificazione, aduzzione di misgi solu",
     "link": "",
     "facebook": "https://m.facebook.com/p/LArche-des-animaux-61553015762134/"
-  },
-  {
-    "name": "Les Sans Colliers, Rescue Dog",
-    "icon": "🐶",
-    "loc": "Sarrola-Carcopino",
-    "distance": "~15 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "Sarrola-Carcopino, 20167",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "—",
-    "desc_fr": "Chiens : Sauvetage et protection de chiens en détresse, adoption Autres : Focus rescue chiens Notes : Association très récente (2024).\n",
-    "desc_co": "Cani : Sauvetage et protection de chiens en détresse, adoption Altre azzione : Focus rescue chiens Note : Association très récente (2024).\nDemander si les associations locales la connaisse ?",
-    "link": "",
-    "facebook": ""
-  },
-  {
-    "name": "Association Mayday Animaux",
-    "icon": "🐾",
-    "loc": "Grosseto-Prugna / Porticcio",
-    "distance": "~20 km",
-    "type": "Association loi 1901",
-    "statut": "",
-    "adresse": "13 allée des Myrthes, 20166 Pietrosella, Grosseto-Prugna",
-    "tel": "Non communiqué",
-    "email": "Non communiqué",
-    "followers": "—",
-    "desc_fr": "Chats : Capture chats errants, nourrissage quotidien, soins vétérinaires, stérilisation chattes, adoption Chiens : Stérilisation chiennes errantes, adoption chiens, aide matérielle aux propriétaires en difficulté Autres : Lutte contre la maltraitance, euthanasie médicale pour animaux en souffrance incurable Notes : Couvre aussi Pietrosella et le secteur de l'Ornano",
-    "desc_co": "Gatti : Capture chats errants, nourrissage quotidien, soins vétérinaires, stérilisation chattes, adoption Cani : Stérilisation chiennes errantes, adoption chiens, aide matérielle aux propriétaires en difficulté Altre azzione : Lutte contre la maltraitance, euthanasie médicale pour animaux en souffrance incurable Note : Couvre aussi Pietrosella et le secteur de l'Ornano",
-    "link": "",
-    "facebook": ""
   }
 ];
 const benevoles = [
@@ -942,15 +828,25 @@ function buildAssoContactPills(asso){
   return pills.length ? pills.join('') : `<span class="linkpill disabled">ℹ️ ${t('animal.notProvided')}</span>`;
 }
 
+function extractYouTubeId(url){
+  if(!url) return '';
+  const m = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
 function getAnimalMedias(animal){
   if(Array.isArray(animal.medias) && animal.medias.length){
     return animal.medias.map(function(m){
+      if(m.type === 'youtube'){
+        const ytId = extractYouTubeId(m.src);
+        return { type:'youtube', src: m.src, ytId, poster: m.poster || (ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : animal.photo), alt: m.alt || animal.name };
+      }
       return { type: m.type === 'video' ? 'video' : 'image', src: m.src, poster: m.poster || animal.photo, alt: m.alt || animal.name };
     });
   }
   return [{type:'image', src: animal.photo, poster: animal.photo, alt: animal.name}];
 }
 function renderMediaSlide(media, animalName){
+  if(media.type === 'youtube') return `<div class="modal-slide yt-slide" data-yt-id="${media.ytId}"><img class="yt-poster" src="${media.poster || ''}" alt="${media.alt || animalName}" /><button type="button" class="yt-play" aria-label="Lire la vidéo">▶</button></div>`;
   if(media.type === 'video') return `<div class="modal-slide"><video controls preload="metadata" playsinline poster="${media.poster || ''}" aria-label="${media.alt || animalName}"><source src="${media.src}"></video></div>`;
   return `<div class="modal-slide"><img src="${media.src}" alt="${media.alt || animalName}" /></div>`;
 }
@@ -969,6 +865,16 @@ function bindModalCarousel(){
   carousel.querySelector('.carousel-nav.prev')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index - 1 + slides.length) % slides.length; sync(); });
   carousel.querySelector('.carousel-nav.next')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index + 1) % slides.length; sync(); });
   dots.forEach((dot,i) => dot.addEventListener('click', function(e){ e.stopPropagation(); index = i; sync(); }));
+  slides.forEach(slide => {
+    const playBtn = slide.querySelector('.yt-play');
+    if(!playBtn) return;
+    playBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const ytId = slide.dataset.ytId;
+      if(!ytId) return;
+      slide.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0" title="Vidéo YouTube" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  });
   sync();
 }
 function openModal(name){
@@ -1015,6 +921,18 @@ function openModal(name){
 function closeModal(e){if(e.target.id === 'modalBackdrop') closeModalDirect()}
 function closeModalDirect(){document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''}
 
+function animateCounter(id, target, suffix){
+  let count = 0;
+  const el = document.getElementById(id);
+  if(!el) return;
+  const step = Math.ceil(target/40);
+  const t = setInterval(()=>{
+    count = Math.min(count+step, target);
+    el.textContent = count+(suffix||'');
+    if(count>=target) clearInterval(t);
+  }, 35);
+}
+
 function applyLang(next){
   lang = next;
   document.documentElement.lang = next;
@@ -1022,7 +940,7 @@ function applyLang(next){
   document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === next));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.dataset.i18n;
-    if(i18n[next][k]) el.innerHTML = i18n[next][k];
+    if(i18n[next][k]) el.innerHTML = i18n[next][k].replace('{n}', assos.length);
   });
   document.querySelectorAll('[data-ph]').forEach(el => {
     const k = el.dataset.ph;
@@ -1038,6 +956,7 @@ function applyLang(next){
 
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.setProperty('--hero-prefix', `\"${t('hero.prefix')}\"`);
+  document.querySelectorAll('[data-i18n="assos.sub"]').forEach(el => { el.innerHTML = el.innerHTML.replace('{n}', assos.length); });
   buildFilters();
   filterAnimals();
   renderAssos();
@@ -1045,6 +964,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSteps();
   updateActionButtons();
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+  setTimeout(()=>{
+    animateCounter('counter-animaux', animals.length);
+    animateCounter('counter-assos', assos.length);
+  }, 600);
 });
 
 document.addEventListener('keydown', e => { const modalOpen = document.getElementById('modalBackdrop').classList.contains('open'); if(e.key === 'Escape') closeModalDirect(); if(!modalOpen) return; const prev = document.querySelector('.carousel-nav.prev'); const next = document.querySelector('.carousel-nav.next'); if(e.key === 'ArrowLeft' && prev) prev.click(); if(e.key === 'ArrowRight' && next) next.click(); });
