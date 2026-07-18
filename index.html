@@ -860,7 +860,12 @@ function bindModalCarousel(){
   function sync(){
     track.style.transform = `translateX(-${index * 100}%)`;
     dots.forEach((dot,i) => dot.classList.toggle('active', i === index));
-    slides.forEach((slide,i) => slide.querySelectorAll('video').forEach(v => { if(i !== index) v.pause(); }));
+    slides.forEach((slide,i) => {
+      if(i === index) return;
+      slide.querySelectorAll('video').forEach(v => v.pause());
+      const frame = slide.querySelector('iframe');
+      if(frame) frame.src = '';
+    });
   }
   carousel.querySelector('.carousel-nav.prev')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index - 1 + slides.length) % slides.length; sync(); });
   carousel.querySelector('.carousel-nav.next')?.addEventListener('click', function(e){ e.stopPropagation(); index = (index + 1) % slides.length; sync(); });
@@ -919,7 +924,12 @@ function openModal(name){
   bindModalCarousel();
 }
 function closeModal(e){if(e.target.id === 'modalBackdrop') closeModalDirect()}
-function closeModalDirect(){document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''}
+function closeModalDirect(){
+  const body = document.getElementById('modalBody');
+  body.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+  body.querySelectorAll('.modal-slide iframe').forEach(f => { f.src = ''; });
+  document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''
+}
 
 function animateCounter(id, target, suffix){
   let count = 0;
