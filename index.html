@@ -154,6 +154,7 @@ section{padding:30px 0 70px}
 .modal-slide{min-width:100%;height:100%;position:relative;background:#e6ecf3}
 .modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
 .modal-slide img,.modal-slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.compat-icon{vertical-align:-3px;margin:0 1px}
 .modal-slide iframe{width:100%;height:100%;display:block;border:0;background:#000}
 .yt-slide{cursor:pointer}
 .yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:2px solid rgba(255,255,255,.85);font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:background .2s,transform .2s}
@@ -572,7 +573,7 @@ const i18n = {
 };
 
 const animals = [
-  {
+{
 name:'Shumi',
 species:'chien',
 age:'adulte',
@@ -586,10 +587,108 @@ medias:
 {type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.jpg',alt:'Shumi photo 1'},
 {type:'youtube', src:'https://www.youtube.com/shorts/_M3CUr2g5Vs', poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video.jpg', alt:'Shumi vidéo2'},
 ],
-race_fr:'Croisé Berger',
-race_co:'Incrociu neru',
-desc_fr:'2ans, vacciné,identifié,stérilisé.<br>ok congénères<br>Pas Ok chats<br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',
-desc_co:'2 anni, vaccinatu, identificatu, sterilizatu<br>Ok cù i so pari<br>Micca ok cù i misgi<br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br>',
+race_fr:'x Berger',
+race_co:'x Pastore',
+desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',
+desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Stella',
+species:'chien',
+age:'Senior',
+gender:'♀',
+area:'Ajaccio',
+urgent:true,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Stella/Stella_2.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Stella/Stella_1.jpg',alt:'Shumi photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Stella/Stella_2.jpg',alt:'Shumi photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Stella/Stella_3.jpg',alt:'Shumi photo 3'},
+],
+race_fr:'Cursinu × Akita',
+race_co:'Cursinu × Akita',
+desc_fr:'8 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : OK<br>🐱 : OK<br><br>"Trop vieille, pas assez petite, trop de poils…"<br>Voilà les commentaires qu\'elle entend lorsque les gens l\'aperçoivent… Quand ils l\'aperçoivent parce que la plupart du temps ils ne la voient même pas, elle passe totalement inaperçue 😢😢.<br>Elle qui a vécu entourée d\'affection et a vu sa vie basculer du jour au lendemain suite au décès de sa maîtresse  😢<br>Oui elle a huit ans, mais doit-elle pour autant vieillir au refuge alors qu\'elle aurait tant à donner à un futur maitre ??<br>Notre croisée Akita est pleine de vie, très joueuse et affectueuse.<br>Par contre elle devra être le seul animal du foyer<br><br>',
+desc_co:'8 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : OK<br>🐱 : OK<br><br>"Troppu vechja, micca abbastanza chjuca, troppu peli..."<br>Eccu i cummenti ch’ella sente quandu a ghjente a vede... Quandu a vede, perchè a maiò parte di u tempu ùn a rimarca mancu, passa cumplettamente inosservata 😢😢.<br>Ella chì hà campatu circundata d’affettu è hà vistu a so vita cambià da un ghjornu à l’altru dopu à a morte di a so patrona 😢<br>Iè, hà ottu anni, ma deve per quessa invechjà in u rifugiu mentre ch’ella averia tantu da dà à un futuru patrone ?<br>A nostra incruciata Akita hè piena di vita, assai ghjucarella è affettuosa.<br>Per contra, duverà esse u solu animale di a casa<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Oko',
+species:'chien',
+age:'Adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Oko/Oko_2.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Oko/Oko_1.jpg',alt:'Oko photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Oko/Oko_2.jpg',alt:'Oko photo 2'},
+],
+race_fr:'x Labrador',
+race_co:'x Labrador',
+desc_fr:'1,5 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : OK<br><br>OKO est un grand loulou plein de vie et débordant d\’affection.❤️<br>Sociable et attachant, il adore partager des moments avec les humains et profiter pleinement de la vie.Il recherche aujourd\’hui une famille ou un maître à la hauteur de son énergie et de son grand cœur, prêt à lui offrir amour, attention et belles aventures au quotidien. Si vous cherchez un compagnon fidèle, affectueux et dynamique, OKO n\’attend plus que vous !<br><br>',
+desc_co:'1,5 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>OKO hè un bellu cane pienu di vita è trabuccante d’affettu. ❤️<br>Sucievule è attachjevule, li piace à sparte mumenti cù l’omi è à gode pienamente di a vita. Oghje cerca una famiglia o un patrone à l’altezza di a so energia è di u so grande core, prontu à offre li amore, attenzione è belle aventure ogni ghjornu.<br>S’è vo circate un cumpagnu fidu, affettuosu è dinamicu, OKO ùn aspetta più chè voi !<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Mirabelle',
+species:'chien',
+age:'Senior',
+gender:'♀',
+area:'Ajaccio',
+urgent:true,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Mirabelle/Mirabelle_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Mirabelle/Mirabelle_2.jpg',alt:'Mirabelle photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Mirabelle/Mirabelle_1.jpg',alt:'Mirabelle photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Mirabelle/Mirabelle_3.jpg',alt:'Mirabelle photo 3'},
+],
+race_fr:'x Berger',
+race_co:'x Berger',
+desc_fr:'10 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : OK<br>🐱 : OK<br><br>À 10 ans, MIRABELLE ne devrait plus passer ses journées derrière les barreaux d\'un refuge. Elle mérite enfin de connaître la douceur d\'un foyer, un panier bien à elle, des promenades paisibles et surtout, tout l\'amour qu\'elle attend depuis si longtemps. Elle espère qu\'une personne posera enfin les yeux sur elle. Son âge ne diminue en rien sa capacité à aimer, bien au contraire.<br><br>',
+desc_co:'10 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : OK<br>🐱 : OK<br><br>À 10 anni, MIRABELLE ùn duverebbe più passà e so ghjurnate daretu à e sbarre d\'un rifugiu. Merita infine di cunnosce a dolcezza d\'una casa, un lettucciu solu per ella, spassighjate tranquille è soprattuttu tuttu l\'amore ch\'ella aspetta dapoi tantu tempu. Spera chì una persona poserà infine u so sguardu nantu à ella. A so età ùn diminuisce in nunda a so capacità d\'amà, ben à l’incontru.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Dick',
+species:'chien',
+age:'Adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Dick/Dick_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Dick/Dick_1.jpg',alt:'Dick photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Dick/Dick_2.jpg',alt:'Dick photo 2'},
+],
+race_fr:'x Griffon',
+race_co:'x Grifonu',
+desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : OK<br><br>Dick est un jeune chien plein de douceur et d\'énergie. C\'est un compagnon affectueux qui s\'entend bien avec ses congénères.<br>C\'est un chien sensible qui a besoin d\'un environnement calme. Il est craintif de la foule et des bruits inconnus. Avec de la patience, de la bienveillance et un foyer rassurant, Dick prend confiance et montre toute sa gentillesse.<br>Il adore les promenades, explorer la nature et profiter des moments de complicité avec les personnes en qui il a confiance.<br>La présence d\'un chien dans le foyer lui serait profitable.<br>Dick recherche une famille douce, prête à lui laisser le temps de s\'adapter et à lui offrir une vie remplie d\'amour et de sécurité.<br><br>',
+desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>Dick hè un ghjovanu cane pienu di dolcezza è d’energia. Hè un cumpagnu affettuosu chì s\'intende bè cù i so simili. Hè un cane sensibile chì hà bisognu d’un ambiente tranquillu. Hà paura di a folla è di i rumori scunnisciuti. Cù pacienza, benevulenza è una casa rassicurante, Dick piglia fiducia è mostra tutta a so buntà. Li piacenu assai e spassighjate, scopre a natura è gode di i mumenti di cumplicità cù e persone di e quali si fida.A presenza d’un altru cane in casa li seria assai benefica.Dick cerca una famiglia dolce, pronta à lascià li u tempu d’adattassi è à offre li una vita piena d’amore è di sicurità.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Piumba',
+species:'chien',
+age:'Adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Piumba/Piumba_2.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Piumba/Piumba_1.jpg',alt:'Piumba photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Piumba/Piumba_2.jpg',alt:'Piumba photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Piumba/Piumba_3.jpg',alt:'Piumba photo 3'},
+],
+race_fr:'Springer',
+race_co:'Springer',
+desc_fr:'7 ans<br>Vacciné, identifié & stérilisé<br>🐶 : ?<br>🐱 : Pas Ok<br><br>Vous souvenez vous de Piumba ce magnifique Springer qui devait intégrer le refuge s\'il ne trouvait pas d\'adoptants ? Hé bien... il est maintenant chez nous 😢. Il a troqué sa chaîne d\'attache contre un petit box. Quel karma que celui là 😡. Attaché depuis 7 ans et à présent enfermé dans un refuge 😩.<br>Nous qui avons appris à le connaître nous pouvons vous dire que c\'est un chien extrêmement proche de l\'humain, très affectueux et très joueur ⚽️ qui apprécie les balades.<br>Il fera le bonheur de son futur adoptant ♥️<br><br>',
+desc_co:'7 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas OK<br><br>Vi ne arricurdate di Piumba, issu magnificu Springer chì duvia entre in rifugiu s\'ellu ùn truvava micca aduttanti ? Ebbè... avà hè cun noi 😢. Hà scambiatu a so catena d\'attaccu contr\'à un picculu box. Chì sorte ingrata a soia 😡. Attaccatu dapoi 7 anni è avà chjosu in un rifugiu 😩.<br>Noi chì avemu amparatu à cunnoscelu vi pudemu dì ch\'ellu hè un cane estremamente vicinu à l\'omu, assai affettuosu è assai ghjucarellu ⚽️, chì apprezza e spassighjate. Darà di sicuru una grande felicità à a so futura famiglia d\'aduzione ♥️.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 ];
 
@@ -634,6 +733,18 @@ let urgentOnly=false;
 function t(k){return (i18n[lang] && i18n[lang][k]) || k;}
 function ageLabel(v){return lang==='fr' ? ({chaton:'chaton / chiot',adulte:'adulte',senior:'senior'}[v] || v) : ({chaton:'gattinu / cagnolu',adulte:'adultu',senior:'seniore'}[v] || v)}
 function speciesLabel(v){return lang==='fr' ? (v==='chat' ? '🐱 Chat' : '🐶 Chien') : (v==='chat' ? '🐱 Gattu' : '🐶 Cane')}
+function renderCompatIcon(value){
+  const clean = value.trim().toLowerCase().replace(/\s+/g,' ');
+  if(clean === 'ok') return '<svg class="compat-icon" viewBox="0 0 20 20" width="18" height="18" role="img" aria-label="Compatible"><circle cx="10" cy="10" r="10" fill="#22a55e"/><path d="M5.5 10.3l3 3 6-6.6" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  if(/^(pas ?ok|micca ?ok|non|no)$/.test(clean)) return '<svg class="compat-icon" viewBox="0 0 20 20" width="18" height="18" role="img" aria-label="Non compatible"><circle cx="10" cy="10" r="10" fill="#e5484d"/><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>';
+  return value;
+}
+function formatCompatText(html){
+  if(!html) return html;
+  return html.replace(/(🐶|🐱)(\s*:\s*)([^<]*)/g, function(full, emoji, sep, value){
+    return emoji + sep + renderCompatIcon(value);
+  });
+}
 function typeLabel(v){return t('types.' + v)}
 
 function buildFilters(){
@@ -651,8 +762,7 @@ function animalCard(a){
   return `<article class="card animal-card" onclick="openModal('${escapedName}')">
     <div class="animal-media">
       <img src="${a.photo}" alt="${a.name}" />
-      <div class="card-badge">${speciesLabel(a.species)}</div>
-      ${a.urgent ? `<div class="card-badge urgent">🔴 ${t('chip.urgent')}</div>` : ''}
+      ${a.urgent ? `<div class="card-badge urgent" style="top:12px">🔴 ${t('chip.urgent')}</div>` : ''}
     </div>
     <div class="animal-name">${a.name}</div>
     <div class="animal-asso">${a.asso}</div>
@@ -661,7 +771,7 @@ function animalCard(a){
       <span class="tag">${lang==='fr' ? a.race_fr : a.race_co}</span>
       ${a.fiv ? '<span class="tag">FIV/FeLV</span>' : ''}
     </div>
-    <div class="animal-desc">${lang==='fr' ? a.desc_fr : a.desc_co}</div>
+    <div class="animal-desc">${formatCompatText(lang==='fr' ? a.desc_fr : a.desc_co)}</div>
     <div class="animal-bottom">
       <span class="loc">📍 ${a.area}</span>
       <button class="mini-btn" onclick="event.stopPropagation();openModal('${escapedName}')">${t('animal.view')}</button>
@@ -909,7 +1019,7 @@ function openModal(name){
           <span class="tag">${lang==='fr' ? a.race_fr : a.race_co}</span>
           ${a.urgent ? `<span class="tag">🔴 ${t('chip.urgent')}</span>` : ''}
         </div>
-        <p style="color:var(--muted);line-height:1.8">${lang==='fr' ? a.desc_fr : a.desc_co} ${t('animal.standard')}</p>
+        <p style="color:var(--muted);line-height:1.8">${formatCompatText(lang==='fr' ? a.desc_fr : a.desc_co)} ${t('animal.standard')}</p>
         <div style="font-weight:800;margin:18px 0 8px">${t('animal.partner')}</div>
         <div class="card" style="padding:14px 16px;border-radius:20px">
           <div style="font-weight:800">${a.asso}</div>
