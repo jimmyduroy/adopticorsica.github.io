@@ -154,6 +154,12 @@ section{padding:30px 0 70px}
 .modal-slide{min-width:100%;height:100%;position:relative;background:#e6ecf3}
 .modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
 .modal-slide img,.modal-slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.site-footer{background:#f1ece5;border-top:1px solid rgba(51,41,34,.08);margin-top:20px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{font-size:.88rem;font-weight:700;color:var(--primary)}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-size:.84rem;color:var(--muted);font-weight:600}
 .compat-icon{vertical-align:-3px;margin:0 1px}
 .modal-slide iframe{width:100%;height:100%;display:block;border:0;background:#000}
 .yt-slide{cursor:pointer}
@@ -517,6 +523,17 @@ h1::before{
     </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="politique-cookies.html">Politique de cookies</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </div>
+      <div class="footer-copy">© 2026 Adopti Corsica</div>
+    </div>
+  </footer>
+
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
     <div class="modal">
       <button class="close" onclick="closeModalDirect()">✕</button>
@@ -609,8 +626,8 @@ medias:
 ],
 race_fr:'Cursinu × Akita',
 race_co:'Cursinu × Akita',
-desc_fr:'8 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : OK<br>🐱 : OK<br><br>"Trop vieille, pas assez petite, trop de poils…"<br>Voilà les commentaires qu\'elle entend lorsque les gens l\'aperçoivent… Quand ils l\'aperçoivent parce que la plupart du temps ils ne la voient même pas, elle passe totalement inaperçue 😢😢.<br>Elle qui a vécu entourée d\'affection et a vu sa vie basculer du jour au lendemain suite au décès de sa maîtresse  😢<br>Oui elle a huit ans, mais doit-elle pour autant vieillir au refuge alors qu\'elle aurait tant à donner à un futur maitre ??<br>Notre croisée Akita est pleine de vie, très joueuse et affectueuse.<br>Par contre elle devra être le seul animal du foyer<br><br>',
-desc_co:'8 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : OK<br>🐱 : OK<br><br>"Troppu vechja, micca abbastanza chjuca, troppu peli..."<br>Eccu i cummenti ch’ella sente quandu a ghjente a vede... Quandu a vede, perchè a maiò parte di u tempu ùn a rimarca mancu, passa cumplettamente inosservata 😢😢.<br>Ella chì hà campatu circundata d’affettu è hà vistu a so vita cambià da un ghjornu à l’altru dopu à a morte di a so patrona 😢<br>Iè, hà ottu anni, ma deve per quessa invechjà in u rifugiu mentre ch’ella averia tantu da dà à un futuru patrone ?<br>A nostra incruciata Akita hè piena di vita, assai ghjucarella è affettuosa.<br>Per contra, duverà esse u solu animale di a casa<br><br>',
+desc_fr:'8 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : Pas OK<br>🐱 : OK<br><br>"Trop vieille, pas assez petite, trop de poils…"<br>Voilà les commentaires qu\'elle entend lorsque les gens l\'aperçoivent… Quand ils l\'aperçoivent parce que la plupart du temps ils ne la voient même pas, elle passe totalement inaperçue 😢😢.<br>Elle qui a vécu entourée d\'affection et a vu sa vie basculer du jour au lendemain suite au décès de sa maîtresse  😢<br>Oui elle a huit ans, mais doit-elle pour autant vieillir au refuge alors qu\'elle aurait tant à donner à un futur maitre ??<br>Notre croisée Akita est pleine de vie, très joueuse et affectueuse.<br>Par contre elle devra être le seul animal du foyer<br><br>',
+desc_co:'8 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : Pas OK<br>🐱 : OK<br><br>"Troppu vechja, micca abbastanza chjuca, troppu peli..."<br>Eccu i cummenti ch’ella sente quandu a ghjente a vede... Quandu a vede, perchè a maiò parte di u tempu ùn a rimarca mancu, passa cumplettamente inosservata 😢😢.<br>Ella chì hà campatu circundata d’affettu è hà vistu a so vita cambià da un ghjornu à l’altru dopu à a morte di a so patrona 😢<br>Iè, hà ottu anni, ma deve per quessa invechjà in u rifugiu mentre ch’ella averia tantu da dà à un futuru patrone ?<br>A nostra incruciata Akita hè piena di vita, assai ghjucarella è affettuosa.<br>Per contra, duverà esse u solu animale di a casa<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Oko',
@@ -689,6 +706,87 @@ race_fr:'Springer',
 race_co:'Springer',
 desc_fr:'7 ans<br>Vacciné, identifié & stérilisé<br>🐶 : ?<br>🐱 : Pas Ok<br><br>Vous souvenez vous de Piumba ce magnifique Springer qui devait intégrer le refuge s\'il ne trouvait pas d\'adoptants ? Hé bien... il est maintenant chez nous 😢. Il a troqué sa chaîne d\'attache contre un petit box. Quel karma que celui là 😡. Attaché depuis 7 ans et à présent enfermé dans un refuge 😩.<br>Nous qui avons appris à le connaître nous pouvons vous dire que c\'est un chien extrêmement proche de l\'humain, très affectueux et très joueur ⚽️ qui apprécie les balades.<br>Il fera le bonheur de son futur adoptant ♥️<br><br>',
 desc_co:'7 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas OK<br><br>Vi ne arricurdate di Piumba, issu magnificu Springer chì duvia entre in rifugiu s\'ellu ùn truvava micca aduttanti ? Ebbè... avà hè cun noi 😢. Hà scambiatu a so catena d\'attaccu contr\'à un picculu box. Chì sorte ingrata a soia 😡. Attaccatu dapoi 7 anni è avà chjosu in un rifugiu 😩.<br>Noi chì avemu amparatu à cunnoscelu vi pudemu dì ch\'ellu hè un cane estremamente vicinu à l\'omu, assai affettuosu è assai ghjucarellu ⚽️, chì apprezza e spassighjate. Darà di sicuru una grande felicità à a so futura famiglia d\'aduzione ♥️.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Poupée',
+species:'chien',
+age:'Adulte',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Poupee/Poupee_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Poupee/Poupee_1.jpg',alt:'Poupee photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Poupee/Poupee_2.jpg',alt:'Poupee photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Poupee/Poupee_3.jpg',alt:'Poupee photo 3'},
+],
+race_fr:'x Beagle',
+race_co:'x BeagleSpringer',
+desc_fr:'3 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>Nous ne connaissons pas le passé de Poupée<br><br>Cette très jolie croisée Beagle est très douce et un peu timide mais elle vous accordera vite sa confiance. Elle a déjà fait beaucoup de progrès.👍<br><br>Néanmoins la présence d\'un autre chien sera un plus pour la rassurer. <br><br>',
+desc_co:'3 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>Ùn cunniscimu micca u passatu di Poupée.<br><br>Issa bellissima cagna incrociu di Beagle hè assai dolce è un pocu timida, ma vi accorderà prestu a so fiducia. Hà digià fattu assai prugressi. 👍<br><br>Nondimenu, a presenza d’un altru cane serà un vantaghju per rassicurà la.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Pumba',
+species:'chien',
+age:'Adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Pumba/Pumba_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Pumba/Pumba_1.jpg',alt:'Pumba photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Pumba/Pumba_2.jpg',alt:'Pumba photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Pumba/Pumba_3.jpg',alt:'Pumba photo 3'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Pumba/Pumba_4.jpg',alt:'Pumba photo 4'},
+],
+race_fr:'x Epagneul',
+race_co:'x Spaniel',
+desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : Pas OK<br>🐱 : Pas Ok<br><br>Pumba est un chien proche de l\'humain, joueur, affectueux, mais aussi protecteur.<br><br>Pumba recherche un adoptant patient qui aura du temps à lui consacrer afin de construire une vraie relation avec lui et s\'investir dans son éducation, avec probablement un suivi canin pour partir sur de bonnes bases.<br>Pumba devra également être le seul chien dans son foyer et sans enfant<br><br>',
+desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : Pas OK<br>🐱 : Pas OK<br><br>Pumba hè un cane assai vicinu à l\'omu, ghjucarellu, affettuosu, ma ancu prutettore.<br><br>Pumba cerca un aduttante paziente chì averà tempu da dedicà li per custruisce una vera relazione cun ellu è impegnassi in a so educazione, cù probabilmente un accumpagnamentu caninu per parte nantu à bone basi.<br>Pumba duverà dinù esse l\'unicu cane di a casa è campà in un foyer senza zitelli.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Arthur Junior',
+species:'chien',
+age:'Chiot',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Arthur_J/Arthur_J_3.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur_J/Arthur_J_1.jpg',alt:'Arthur_J photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur_J/Arthur_J_2.jpg',alt:'Arthur_J photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur_J/Arthur_J_3.jpg',alt:'Arthur_J photo 3'},
+],
+race_fr:'Bruno du Jura',
+race_co:'Brunu di u Ghjura',
+desc_fr:'1 an<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>Arthur Junior a rejoint la famille des Caldachiens après avoir été en errance puis accueilli chez une gentille personne pendant 15 jours.<br><br>Notre Arthur est beau comme un ♥️ ,  il déborde d\'amour et n\'aime pas trop être seul. il est sage en voiture,  affectueux, recherche la présence des autres chiens même s\'il faut freiner sa fougue de jeune chien. Nous recherchons pour lui le meilleur des maîtres 🙏.<br><br>Ne le laissons pas grandir au refuge 🙏<br><br>',
+desc_co:'1 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>Arthur Junior hà righjuntu a famiglia di i Caldachiens dopu avè campatu in vagabondaghju è dopu esse statu accoltu da una persona gentile durante 15 ghjorni.<br><br>U nostru Arthur hè bellu cum\'è un ♥️, trabocca d\'amore è ùn apprezza tantu a sulitudine. Hè bravu in vittura, affettuosu, cerca a presenza di l\'altri cani, ancu s\'ellu ci vole qualchì volta à calmà a so foga di ghjovanu cane. Cerchemu per ellu u megliu di i patroni 🙏.<br><br>Ùn lu lasciaimu cresce in u rifugiu 🙏.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Lili',
+species:'chien',
+age:'Adulte',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Lili/Lili_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Lili/Lili_1.jpg',alt:'Lili photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Lili/Lili_2.jpg',alt:'Lili photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Lili/Lili_3.jpg',alt:'Lili photo 3'},
+],
+race_fr:'x Epagneul',
+race_co:'x Epagneul',
+desc_fr:'x an<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>L\' histoire de Lili est bien triste : elle a été trouvée alors qu\'elle était toute petite et maigrichonne à côté des poubelles. Une jeune femme a eu pitié d\'elle et l\'a amenée chez elle. Logée par son employeur, elle savait qu\'elle n\'avait pas le droit d\'avoir un animal. Elle a donc caché cette petite chienne pendant trois mois jusqu\'au jour où son employeur l\'a découverte et l\'a  obligée à s\'en séparer<br><br>',
+desc_co:'x anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>A storia di Lili hè veramente trista : hè stata truvata quand\'ella era tutta chjuca è magra magra vicinu à i cuntinitori di i rifiuti.Una ghjovana donna hà avutu pietà d\'ella è l\'hà purtata in casa soia. Allughjata da u so patronu, sapia chì ùn avia micca u dirittu d’avè un animale. Hà dunque piattatu sta piccula cagnulella durante trè mesi, sin’à u ghjornu chì u so patronu l\'hà scuperta è l\'hà obligata à separassi d\'ella.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 ];
 
