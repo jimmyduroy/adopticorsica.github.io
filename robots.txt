@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adopticorsica.github.io/accueil/sitemap.xml

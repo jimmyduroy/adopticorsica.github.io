@@ -4,7 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adopti Corsica</title>
+
+  <!-- SEO de base -->
+  <title>Adopti Corsica – Adoption de chiens et chats à Ajaccio et en Corse-du-Sud</title>
+  <meta name="description" content="Adoptez un chien, un chat ou un NAC en Corse-du-Sud avec Adopti Corsica : retrouvez en un seul endroit tous les animaux à l'adoption des associations partenaires d'Ajaccio et de la région." />
+  <meta name="keywords" content="adoption animaux Corse, adopter un chien Ajaccio, adopter un chat Corse-du-Sud, association protection animale Corse, refuge animalier Ajaccio, SPA Corse, chat à adopter, chien à adopter" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Adopti Corsica" />
+  <meta name="theme-color" content="#0b2941" />
+  <link rel="canonical" href="https://adopticorsica.github.io/accueil/" />
+
+  <!-- Ciblage local (Ajaccio / Corse-du-Sud) -->
+  <meta name="geo.region" content="FR-2A" />
+  <meta name="geo.placename" content="Ajaccio" />
+  <meta name="ICBM" content="41.9192, 8.7386" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn...) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Adopti Corsica" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Adopti Corsica – Adoption de chiens et chats à Ajaccio et en Corse-du-Sud" />
+  <meta property="og:description" content="Retrouvez en un seul endroit tous les animaux à l'adoption des associations partenaires de la région d'Ajaccio, et donnez-leur une nouvelle vie." />
+  <meta property="og:image" content="https://adopticorsica.github.io/accueil/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://adopticorsica.github.io/accueil/" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adopti Corsica – Adoption de chiens et chats à Ajaccio et en Corse-du-Sud" />
+  <meta name="twitter:description" content="Retrouvez en un seul endroit tous les animaux à l'adoption des associations partenaires de la région d'Ajaccio." />
+  <meta name="twitter:image" content="https://adopticorsica.github.io/accueil/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <!-- Données structurées Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Adopti Corsica",
+    "url": "https://adopticorsica.github.io/accueil/",
+    "description": "Plateforme recensant les animaux à l'adoption des associations de protection animale de la région d'Ajaccio et de Corse-du-Sud.",
+    "inLanguage": "fr-FR",
+    "about": {
+      "@type": "Thing",
+      "name": "Adoption d'animaux de compagnie en Corse"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Ajaccio, Corse-du-Sud, Corse"
+    }
+  }
+  </script>
+
   <style>
 :root{
   --card:rgba(255,255,255,.92);
@@ -66,7 +120,7 @@ img{max-width:100%;display:block}
   position:relative;
   background:
     linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.0)),
-    url("Designer.png") center center / cover no-repeat;
+    url("Designer.webp") center center / cover no-repeat;
   border:1px solid rgba(51,41,34,.06);
   border-radius:0 0 26px 26px;
   min-height:560px;
@@ -120,18 +174,14 @@ section{padding:30px 0 70px}
 .animal-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:14px}
 .loc{font-size:.84rem;color:var(--muted)}
 .mini-btn{height:40px;padding:0 14px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font:inherit;font-weight:800;cursor:pointer}
-.assoc-grid,.vol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.assoc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .assoc-head{display:flex;gap:14px;align-items:flex-start}
 .asso-icon{display:flex;align-items:flex-start;gap:6px;flex:0 0 auto}.asso-icon.stacked{flex-direction:column}.asso-icon-badge{display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:999px;background:rgba(21,34,48,.05);font-size:.76rem;font-weight:700;color:var(--muted);line-height:1;white-space:nowrap}.assoc-name-wrap{min-width:0}
-.assoc,.vol{display:flex;flex-direction:column;height:100%}
-.assoc h3,.vol h3{margin:0 0 5px;font-size:1.05rem}
+.assoc{display:flex;flex-direction:column;height:100%}
+.assoc h3{margin:0 0 5px;font-size:1.05rem}
 .small{font-size:.84rem;color:var(--muted)}
-.assoc p,.vol p{color:var(--muted);line-height:1.7;font-size:.93rem}
+.assoc p{color:var(--muted);line-height:1.7;font-size:.93rem}
 .assoc p:last-of-type{margin-bottom:0}
-.vol-asso-title{display:block;margin-top:14px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--accent)}
-.vol-assos{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-.vol-asso-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,rgba(11,41,65,.08),rgba(191,75,60,.12));border:1px solid rgba(11,41,65,.10);color:var(--primary);font-size:.84rem;font-weight:800;box-shadow:0 8px 20px rgba(16,47,73,.08)}
-.vol-asso-pill::before{content:'👉';font-size:.92rem;line-height:1}
 .assoc-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
 .linkpill{padding:9px 11px;border-radius:14px;background:rgba(21,34,48,.05);font-size:.84rem;font-weight:700;color:var(--primary)}
 .linkpill.disabled{color:var(--muted);opacity:.78;pointer-events:none}
@@ -155,6 +205,11 @@ section{padding:30px 0 70px}
 .modal-slide::after{content:'';position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.16));pointer-events:none}
 .modal-slide img,.modal-slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
 .site-footer{background:#f1ece5;border-top:1px solid rgba(51,41,34,.08);margin-top:20px}
+.assoc-banner{background:linear-gradient(90deg,#0b2941,#102f49);color:#fff}
+.assoc-banner .container{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 10px;padding:10px 20px;text-align:center;font-size:.86rem}
+.assoc-banner strong{font-weight:800}
+.assoc-banner a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:2px}
+.assoc-banner a:hover{color:var(--accent)}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0}
 .footer-links{display:flex;gap:28px;flex-wrap:wrap}
 .footer-links a{font-size:.88rem;font-weight:700;color:var(--primary)}
@@ -178,7 +233,7 @@ section{padding:30px 0 70px}
 @media (hover:none){.carousel-nav{opacity:1;background:rgba(255,255,255,.18)}}
 @media (max-width:1100px){
   .search-grid{grid-template-columns:1fr}
-  .animals,.assoc-grid,.vol-grid,.steps{grid-template-columns:repeat(2,1fr)}
+  .animals,.assoc-grid,.steps{grid-template-columns:repeat(2,1fr)}
   .hero-copy{min-height:680px;background-position:63% center}
 }
 @media (max-width:900px){
@@ -211,7 +266,7 @@ section{padding:30px 0 70px}
   .search-shell::after{padding:0 16px 10px}
   .search-grid{grid-template-columns:1fr;padding:0 16px 16px;gap:10px}
   .field,.select{height:46px;font-size:16px}
-  .animals,.assoc-grid,.vol-grid,.steps{grid-template-columns:1fr}
+  .animals,.assoc-grid,.steps{grid-template-columns:1fr}
   .section-head{flex-direction:column;align-items:flex-start;margin-bottom:18px}
   .adopt-actions{width:100%;justify-content:stretch;gap:10px;margin-top:2px}
   .adopt-filter-btn{flex:1;min-height:44px}
@@ -228,13 +283,17 @@ section{padding:30px 0 70px}
   .steps{padding:18px}
   .step{padding:18px}
   .modal-backdrop{padding:10px}
-  .modal{padding:22px;border-radius:30px;max-height:none;width:1000px;min-width:1000px;height:720px;min-height:720px}
-  .modal-grid{grid-template-columns:520px 1fr;min-width:920px}
-  .modal-media{min-height:420px}
+  .modal{padding:18px;border-radius:24px;max-height:calc(100vh - 20px);width:100%;min-width:0;height:auto;min-height:0;max-width:100%}
+  .modal-grid{grid-template-columns:1fr;min-width:0;gap:14px}
+  .modal-media{min-height:260px;height:260px}
+  .modal-carousel{min-height:260px;height:260px}
 }
   
 
-/* ===== Mode mise en page fixe + ascenseur horizontal ===== */
+/* ===== Mode mise en page fixe (desktop uniquement) + ascenseur horizontal ===== */
+/* Ce bloc ne s'applique plus qu'à partir de 1101px de large : en dessous, */
+/* ce sont les règles responsive @media ci-dessus qui prennent le relais. */
+@media (min-width: 1101px){
 html{
   overflow-x:auto !important;
 }
@@ -361,7 +420,7 @@ h1::before{
   flex:0 0 auto !important;
   min-height:unset !important;
 }
-.animals,.assoc-grid,.vol-grid{
+.animals,.assoc-grid{
   grid-template-columns:repeat(3,1fr) !important;
 }
 .steps{
@@ -408,10 +467,17 @@ h1::before{
 .modal-media{
   min-height:320px !important;
 }
+}
 
   </style>
 </head>
 <body>
+  <div class="assoc-banner">
+    <div class="container">
+      <span data-i18n="banner.assoc">📣 <strong>Vous êtes une association de protection animale dans la région d'Ajaccio en Corse ?</strong> Contactez-moi pour faire apparaître gratuitement vos animaux à l'adoption sur ce site : <a href="mailto:adopti.corsica@gmail.com">adopti.corsica@gmail.com</a></span>
+    </div>
+  </div>
+
   <div class="topbar">
     <div class="container nav">
       <a class="brand" href="#top">
@@ -424,7 +490,6 @@ h1::before{
       <div class="nav-links">
         <a href="#animaux" data-i18n="nav.animals">Animaux</a>
         <a href="#associations" data-i18n="nav.assos">Associations</a>
-        <a href="#benevoles" data-i18n="nav.volunteer">Bénévolat</a>
         <div class="lang" aria-label="Choix de langue">
           <button class="active" data-lang="fr">FR</button>
           <button data-lang="co">CO</button>
@@ -508,19 +573,6 @@ h1::before{
         </div>
       </div>
     </section>
-
-    <section id="benevoles">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow" data-i18n="vol.eyebrow">💛 Bénévolat</div>
-            <h2 data-i18n="vol.title">Donnez de votre temps</h2>
-            <p data-i18n="vol.sub">Les associations ont besoin de vous : familles d’accueil, transport, nourrissage…</p>
-          </div>
-        </div>
-        <div class="vol-grid" id="volGrid"></div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -545,7 +597,8 @@ h1::before{
 const i18n = {
   fr:{
     'brand.title':'Adopti Corsica','brand.sub':'Aide à l\'adoption animale en Corse (Région d\'Ajaccio)',
-    'nav.animals':'Animaux','nav.assos':'Associations','nav.volunteer':'Bénévolat',
+    'nav.animals':'Animaux','nav.assos':'Associations',
+    'banner.assoc':'📣 <strong>Vous êtes une association de protection animale dans la région d\'Ajaccio en Corse ?</strong> Contactez-moi pour faire apparaître gratuitement vos animaux à l\'adoption sur ce site : <a href="mailto:adopti.corsica@gmail.com">adopti.corsica@gmail.com</a>',
     'hero.prefix':'Ensemble, offrons-leur',
     'hero.title':'une<br>nouvelle vie',
     'hero.sub':'Adoptez un compagnon et faites la différence. <em><br>L\'amore ùn hà micca prezzu.</em>',
@@ -555,19 +608,18 @@ const i18n = {
     'animals.eyebrow':'🐾 À adopter','animals.title':'Ils n\'attendent que vous','animals.sub':'Tous les animaux proposés à l\'adoption par nos associations partenaires en Corse du Sud.','animals.urgentBtn':'Urgence','animals.allBtn':'Tous',
     'assos.eyebrow':'🤝 Réseau local','assos.title':'Nos Associations Partenaires','assos.sub':'Retrouvez les {n} associations de protection animale partenaires.',
     'steps.eyebrow':'✨ Comment ça marche','steps.title':'Adopter, c\'est simple','steps.sub':'Quelques étapes pour accueillir un compagnon et changer leur vie et la votre.',
-    'vol.eyebrow':'💛 Bénévolat','vol.title':'Donnez de votre temps','vol.sub':'Les associations ont besoin de vous : familles d\'accueil, transport, nourrissage…',
     'animal.view':'Voir la fiche','animal.contact':'Contacter','animal.close':'Fermer','animal.partner':'Association responsable','animal.standard':'Le dossier d\'adoption et le premier échange se font directement avec l\'association indiquée.','animal.contactInfo':'Coordonnées de l\'association','animal.notProvided':'Non communiqué',
     'steps.cards':[
       {no:'01',icon:'🔎',title:'Cherchez',text:'Filtrez rapidement par espèce, âge, zone...'},
       {no:'02',icon:'💬',title:'Contactez',text:'Prenez contact directement avec l\'association responsable de l\'animal qui vous a touché.'},
       {no:'03',icon:'❤️',title:'Rencontrez',text:'Organisez une visite pour vous assurer que le courant passe bien.'},
       {no:'04',icon:'🏠',title:'Adoptez',text:'Signez le contrat d\'adoption, et repartez avec votre compagnon !'}
-    ],
-    'types.famille':'🏠 Famille d\'accueil','types.transport':'🚗 Transport','types.nourrissage':'🍽️ Nourrissage'
+    ]
   },
   co:{
     'brand.title':'Adopti Corsica','brand.sub':'Aiutu à l\'aduzzione d\'animali in Corsica (Regione d\'Aiacciu)',
-    'nav.animals':'Animali','nav.assos':'Associi','nav.volunteer':'Voluntariatu',
+    'nav.animals':'Animali','nav.assos':'Associi',
+    'banner.assoc':'📣 <strong>Site vo un\'assuciazione di prutezzione animale in a regione d’Aiacciu in Corsica ?</strong> Cuntattatemi per fà cumparisce gratuitamente i vostri animali da aduttà nant’à stu situ : <a href="mailto:adopti.corsica@gmail.com">adopti.corsica@gmail.com</a>',
     'hero.prefix':'Inseme, offremu li',
     'hero.title':'una<br>nova vita',
     'hero.sub':'Aduttate un cumpagnu è fate a differenza. <em><br>L\'amore ùn hà micca prezzu.</em>',
@@ -577,17 +629,17 @@ const i18n = {
     'animals.eyebrow':'🐾 Da aduttà','animals.title':'Ùn aspettanu chè voi','animals.sub':'Tutti l\'animali pruposti à l\'adozione da e nostre associi partenarie in Corsica Suttana.','animals.urgentBtn':'Urgenza','animals.allBtn':'Tutti',
     'assos.eyebrow':'🤝 Reta lucale','assos.title':'E nostre associi partenarie','assos.sub':'Truvate e {n} associi partenarie di prutezzione animale.',
     'steps.eyebrow':'✨ Cumu funziona','steps.title':'Aduttà hè simplice','steps.sub':'Qualchì tappa per accoglie un cumpagnu è cambià a so vita è a vostra.',
-    'vol.eyebrow':'💛 Voluntariatu','vol.title':'Date di u vostru tempu','vol.sub':'L\'associi anu bisognu di voi : famiglie d\'accogliu, trasportu, nutrimentu…',
     'animal.view':'Vede a scheda','animal.contact':'Cuntattà','animal.close':'Chjode','animal.partner':'Assuciazione rispunsevule','animal.standard':'U cartulare d\'adozione è u primu scambiu si facenu direttamente cù l\'assuciazione indicata.','animal.contactInfo':'Cuntatti di l\'assuciazione','animal.notProvided':'Micca cumunicatu',
     'steps.cards':[
       {no:'01',icon:'🔎',title:'Circate',text:'Filtrate prestu per spezia, età, zona...'},
       {no:'02',icon:'💬',title:'Cuntattate',text:'Pigliate cuntattu direttamente cù l\'assuciazione rispunsevule di l\'animale chì vi hà toccu.'},
       {no:'03',icon:'❤️',title:'Scuntrate',text:'Urganizate una visita per assicuravvi chì u currente passa bè.'},
       {no:'04',icon:'🏠',title:'Aduttate',text:'Firmate u cuntrattu d\'adozione, è partite cù u vostru cumpagnu !'}
-    ],
-    'types.famille':'🏠 Famiglia d\'accogliu','types.transport':'🚗 Trasportu','types.nourrissage':'🍽️ Nutrimentu'
+    ]
   }
 };
+
+/* ===== LISTE DES CHIENS ===== */
 
 const animals = [
 {
@@ -598,21 +650,24 @@ gender:'♂',
 area:'Ajaccio',
 urgent:false,
 fiv:false,
-photo:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.jpg',
+photo:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_1.jpg',
 medias:
 [
-{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi.jpg',alt:'Shumi photo 1'},
-{type:'youtube', src:'https://www.youtube.com/shorts/_M3CUr2g5Vs', poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video.jpg', alt:'Shumi vidéo2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_1.jpg',alt:'Shumi photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_2.jpg',alt:'Shumi photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_3.jpg',alt:'Shumi photo 3'},
+{type:'youtube', src:'https://www.youtube.com/shorts/_M3CUr2g5Vs', poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video.jpg', alt:'Shumi vidéo1'},
+{type:'youtube', src:'https://youtube.com/shorts/j4skRzSPU5I', poster:'S.C.D.A. - Refuge Caldaniccia/Shumi/Shumi_video2.jpg', alt:'Shumi vidéo2'},
 ],
 race_fr:'x Berger',
 race_co:'x Pastore',
-desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Chien, affectueux, débordant d\'énergie et très joueur.<br>On vous l\'affirme vous ne pourrez que l\'aimer 🥰<br><br>',
-desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Cane affettuosu, pienu d\'energia è assai ghjucadore<br>Vi l\'affermemu: ùn pudete chè amallu 🥰<br><br>',
+desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Impossible de résister à son regard, à son sourire et à sa joie de vivre communicative. 💖.<br><br>Shumi est un compagnon joueur, affectueux et toujours prêt pour une séance de câlins. Curieux et enthousiaste, il adore partir à l\'aventure, découvrir de nouveaux horizons et partager chaque instant avec les humains qu\'il aime.<br><br>Shumi recherche désespérément son humain préféré, celui avec lequel il pourra construire une relation unique faite de complicité, de tendresse et de belles escapades.<br><br>',
+desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas Ok<br><br>Impussibule di resiste à u so sguardu, à u so surrisu è à a so gioia di campà contagiosa.💖.<br><br>Shumi hè un cumpagnu ghjucarellu, affettuosu è sempre prontu per una sessione di carezze. Curiosu è entusiastu, li piace à parte à l\'avventura, scopre novi orizonti è sparte ogni mumentu cù l\'umani ch’ellu ama.<br><br>Shumi cerca addisperatamente u so umanu preferitu, quellu cù u quale puderà custruisce una relazione unica fatta di cumplicità, tenerezza è belle scappate.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Stella',
 species:'chien',
-age:'Senior',
+age:'senior',
 gender:'♀',
 area:'Ajaccio',
 urgent:true,
@@ -626,13 +681,13 @@ medias:
 ],
 race_fr:'Cursinu × Akita',
 race_co:'Cursinu × Akita',
-desc_fr:'8 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : Pas OK<br>🐱 : OK<br><br>"Trop vieille, pas assez petite, trop de poils…"<br>Voilà les commentaires qu\'elle entend lorsque les gens l\'aperçoivent… Quand ils l\'aperçoivent parce que la plupart du temps ils ne la voient même pas, elle passe totalement inaperçue 😢😢.<br>Elle qui a vécu entourée d\'affection et a vu sa vie basculer du jour au lendemain suite au décès de sa maîtresse  😢<br>Oui elle a huit ans, mais doit-elle pour autant vieillir au refuge alors qu\'elle aurait tant à donner à un futur maitre ??<br>Notre croisée Akita est pleine de vie, très joueuse et affectueuse.<br>Par contre elle devra être le seul animal du foyer<br><br>',
-desc_co:'8 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : Pas OK<br>🐱 : OK<br><br>"Troppu vechja, micca abbastanza chjuca, troppu peli..."<br>Eccu i cummenti ch’ella sente quandu a ghjente a vede... Quandu a vede, perchè a maiò parte di u tempu ùn a rimarca mancu, passa cumplettamente inosservata 😢😢.<br>Ella chì hà campatu circundata d’affettu è hà vistu a so vita cambià da un ghjornu à l’altru dopu à a morte di a so patrona 😢<br>Iè, hà ottu anni, ma deve per quessa invechjà in u rifugiu mentre ch’ella averia tantu da dà à un futuru patrone ?<br>A nostra incruciata Akita hè piena di vita, assai ghjucarella è affettuosa.<br>Per contra, duverà esse u solu animale di a casa<br><br>',
+desc_fr:'8 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : Pas OK<br>🐱 : Pas OK<br><br>"Trop vieille, pas assez petite, trop de poils…"<br>Voilà les commentaires qu\'elle entend lorsque les gens l\'aperçoivent… Quand ils l\'aperçoivent parce que la plupart du temps ils ne la voient même pas, elle passe totalement inaperçue 😢😢.<br>Elle qui a vécu entourée d\'affection et a vu sa vie basculer du jour au lendemain suite au décès de sa maîtresse  😢<br>Oui elle a huit ans, mais doit-elle pour autant vieillir au refuge alors qu\'elle aurait tant à donner à un futur maitre ??<br>Notre croisée Akita est pleine de vie, très joueuse et affectueuse.<br>Par contre elle devra être le seul animal du foyer<br><br>',
+desc_co:'8 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : Pas OK<br>🐱 : Pas OK<br><br>"Troppu vechja, micca abbastanza chjuca, troppu peli..."<br>Eccu i cummenti ch’ella sente quandu a ghjente a vede... Quandu a vede, perchè a maiò parte di u tempu ùn a rimarca mancu, passa cumplettamente inosservata 😢😢.<br>Ella chì hà campatu circundata d’affettu è hà vistu a so vita cambià da un ghjornu à l’altru dopu à a morte di a so patrona 😢<br>Iè, hà ottu anni, ma deve per quessa invechjà in u rifugiu mentre ch’ella averia tantu da dà à un futuru patrone ?<br>A nostra incruciata Akita hè piena di vita, assai ghjucarella è affettuosa.<br>Per contra, duverà esse u solu animale di a casa<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Oko',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♂',
 area:'Ajaccio',
 urgent:false,
@@ -651,7 +706,7 @@ asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Mirabelle',
 species:'chien',
-age:'Senior',
+age:'senior',
 gender:'♀',
 area:'Ajaccio',
 urgent:true,
@@ -665,13 +720,13 @@ medias:
 ],
 race_fr:'x Berger',
 race_co:'x Berger',
-desc_fr:'10 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : OK<br>🐱 : OK<br><br>À 10 ans, MIRABELLE ne devrait plus passer ses journées derrière les barreaux d\'un refuge. Elle mérite enfin de connaître la douceur d\'un foyer, un panier bien à elle, des promenades paisibles et surtout, tout l\'amour qu\'elle attend depuis si longtemps. Elle espère qu\'une personne posera enfin les yeux sur elle. Son âge ne diminue en rien sa capacité à aimer, bien au contraire.<br><br>',
-desc_co:'10 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : OK<br>🐱 : OK<br><br>À 10 anni, MIRABELLE ùn duverebbe più passà e so ghjurnate daretu à e sbarre d\'un rifugiu. Merita infine di cunnosce a dolcezza d\'una casa, un lettucciu solu per ella, spassighjate tranquille è soprattuttu tuttu l\'amore ch\'ella aspetta dapoi tantu tempu. Spera chì una persona poserà infine u so sguardu nantu à ella. A so età ùn diminuisce in nunda a so capacità d\'amà, ben à l’incontru.<br><br>',
+desc_fr:'10 ans<br>Vaccinée, identifiée & stérilisée<br>🐶 : OK<br>🐱 : ?<br><br>À 10 ans, MIRABELLE ne devrait plus passer ses journées derrière les barreaux d\'un refuge. Elle mérite enfin de connaître la douceur d\'un foyer, un panier bien à elle, des promenades paisibles et surtout, tout l\'amour qu\'elle attend depuis si longtemps. Elle espère qu\'une personne posera enfin les yeux sur elle. Son âge ne diminue en rien sa capacité à aimer, bien au contraire.<br><br>',
+desc_co:'10 anni<br>Vaccinata, identificata è sterilizata<br>🐶 : OK<br>🐱 : ?<br><br>À 10 anni, MIRABELLE ùn duverebbe più passà e so ghjurnate daretu à e sbarre d\'un rifugiu. Merita infine di cunnosce a dolcezza d\'una casa, un lettucciu solu per ella, spassighjate tranquille è soprattuttu tuttu l\'amore ch\'ella aspetta dapoi tantu tempu. Spera chì una persona poserà infine u so sguardu nantu à ella. A so età ùn diminuisce in nunda a so capacità d\'amà, ben à l’incontru.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Dick',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♂',
 area:'Ajaccio',
 urgent:false,
@@ -690,7 +745,7 @@ asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Piumba',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♂',
 area:'Ajaccio',
 urgent:false,
@@ -705,12 +760,12 @@ medias:
 race_fr:'Springer',
 race_co:'Springer',
 desc_fr:'7 ans<br>Vacciné, identifié & stérilisé<br>🐶 : ?<br>🐱 : Pas Ok<br><br>Vous souvenez vous de Piumba ce magnifique Springer qui devait intégrer le refuge s\'il ne trouvait pas d\'adoptants ? Hé bien... il est maintenant chez nous 😢. Il a troqué sa chaîne d\'attache contre un petit box. Quel karma que celui là 😡. Attaché depuis 7 ans et à présent enfermé dans un refuge 😩.<br>Nous qui avons appris à le connaître nous pouvons vous dire que c\'est un chien extrêmement proche de l\'humain, très affectueux et très joueur ⚽️ qui apprécie les balades.<br>Il fera le bonheur de son futur adoptant ♥️<br><br>',
-desc_co:'7 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : Pas OK<br><br>Vi ne arricurdate di Piumba, issu magnificu Springer chì duvia entre in rifugiu s\'ellu ùn truvava micca aduttanti ? Ebbè... avà hè cun noi 😢. Hà scambiatu a so catena d\'attaccu contr\'à un picculu box. Chì sorte ingrata a soia 😡. Attaccatu dapoi 7 anni è avà chjosu in un rifugiu 😩.<br>Noi chì avemu amparatu à cunnoscelu vi pudemu dì ch\'ellu hè un cane estremamente vicinu à l\'omu, assai affettuosu è assai ghjucarellu ⚽️, chì apprezza e spassighjate. Darà di sicuru una grande felicità à a so futura famiglia d\'aduzione ♥️.<br><br>',
+desc_co:'7 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : ?<br>🐱 : Pas OK<br><br>Vi ne arricurdate di Piumba, issu magnificu Springer chì duvia entre in rifugiu s\'ellu ùn truvava micca aduttanti ? Ebbè... avà hè cun noi 😢. Hà scambiatu a so catena d\'attaccu contr\'à un picculu box. Chì sorte ingrata a soia 😡. Attaccatu dapoi 7 anni è avà chjosu in un rifugiu 😩.<br>Noi chì avemu amparatu à cunnoscelu vi pudemu dì ch\'ellu hè un cane estremamente vicinu à l\'omu, assai affettuosu è assai ghjucarellu ⚽️, chì apprezza e spassighjate. Darà di sicuru una grande felicità à a so futura famiglia d\'aduzione ♥️.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Poupée',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♀',
 area:'Ajaccio',
 urgent:false,
@@ -730,7 +785,7 @@ asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Pumba',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♂',
 area:'Ajaccio',
 urgent:false,
@@ -751,7 +806,7 @@ asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Arthur Junior',
 species:'chien',
-age:'Chiot',
+age:'chaton',
 gender:'♂',
 area:'Ajaccio',
 urgent:false,
@@ -771,7 +826,7 @@ asso:'S.C.D.A. - Refuge Caldaniccia'},
 {
 name:'Lili',
 species:'chien',
-age:'Adulte',
+age:'adulte',
 gender:'♀',
 area:'Ajaccio',
 urgent:false,
@@ -785,9 +840,395 @@ medias:
 ],
 race_fr:'x Epagneul',
 race_co:'x Epagneul',
-desc_fr:'x an<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>L\' histoire de Lili est bien triste : elle a été trouvée alors qu\'elle était toute petite et maigrichonne à côté des poubelles. Une jeune femme a eu pitié d\'elle et l\'a amenée chez elle. Logée par son employeur, elle savait qu\'elle n\'avait pas le droit d\'avoir un animal. Elle a donc caché cette petite chienne pendant trois mois jusqu\'au jour où son employeur l\'a découverte et l\'a  obligée à s\'en séparer<br><br>',
+desc_fr:'x an<br>🐶 : OK<br>🐱 : Ok<br><br>L\' histoire de Lili est bien triste : elle a été trouvée alors qu\'elle était toute petite et maigrichonne à côté des poubelles. Une jeune femme a eu pitié d\'elle et l\'a amenée chez elle. Logée par son employeur, elle savait qu\'elle n\'avait pas le droit d\'avoir un animal. Elle a donc caché cette petite chienne pendant trois mois jusqu\'au jour où son employeur l\'a découverte et l\'a  obligée à s\'en séparer<br><br>',
 desc_co:'x anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>A storia di Lili hè veramente trista : hè stata truvata quand\'ella era tutta chjuca è magra magra vicinu à i cuntinitori di i rifiuti.Una ghjovana donna hà avutu pietà d\'ella è l\'hà purtata in casa soia. Allughjata da u so patronu, sapia chì ùn avia micca u dirittu d’avè un animale. Hà dunque piattatu sta piccula cagnulella durante trè mesi, sin’à u ghjornu chì u so patronu l\'hà scuperta è l\'hà obligata à separassi d\'ella.<br><br>',
 asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Jules',
+species:'chien',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Jules/Jules_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Jules/Jules_1.jpg',alt:'Jules photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Jules/Jules_2.jpg',alt:'Jules photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Jules/Jules_3.jpg',alt:'Jules photo 3'},
+],
+race_fr:'Griffon',
+race_co:'Grifonu',
+desc_fr:'1 an<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>"Coucou Je m\'appelle Jules ,je suis un griffon de neuf mois et mes taties au refuge sont toutes gagas de ma personne 🤣 <br><br>Elles disent que je suis doux, câlin, mais également très joueur.<br>Je les ai même entendu dire que je suis très beau et que je m\'entends  avec tout le monde 😇<br><br>Je suis encore un bébé et j\'aimerais tant avoir une famille à moi 🙏<br><br>Sa famille se trouve peut-être parmi vous, et on vous l\'assure, vous aurez bien de la chance😍<br><br>',
+desc_co:'1 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>Coucou, mi chjamu Jules. Sò un Grifonu di nove mesi è e mio zie di u rifugiu sò tutte matte di mè 🤣<br><br>Dicenu chì sò dolce, teneru è coccolone, ma ancu assai ghjucarellu.<br>L\'aghju ancu intese dì chì sò assai bellu è chì mi intendu cù tutti 😇<br><br>Sò sempre un zitellucciu è mi piacerebbe tantu avè una famiglia tutta per mè 🙏<br><br>Forse a mo famiglia si trova trà voi, è vi assicuremu chì sarete propiu furtunati d’avemi cun voi 😍<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Bianca',
+species:'chien',
+age:'senior',
+gender:'♀',
+area:'Ajaccio',
+urgent:true,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Bianca/Bianca_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Bianca/Bianca_1.jpg',alt:'Bianca photo 1'},
+],
+race_fr:'x Terrier',
+race_co:'x Terrier',
+desc_fr:'7 an<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : ?<br><br>Bianca, jolie fifille de 7 ans. Enfin jolie...il fallait le dire vite ...😢<br><br>Quand nous l\'avons vue nous avons cru halluciner tellement elle était repoussante, certainement jamais toilettée depuis sa naissance...des quantités de poils collés, amalgamés, immondes et odorants.<br><br>Nous remercions Solenn de la WOUAF MOBILE  qui est venue à notre secours à titre gracieux et qui a passé plus de 2 heures pour lui redonner l\'apparence d\'un chien 🙏🙏. Solenn n\'avait jamais vu un chien dans cet état et a dû la tondre entièrement.<br><br>La maltraitance animale prend diverses formes mais il est certain que Bianca est une victime de plus 😩.<br><br>Si l\'histoire de Bianca vous touche venez lui rendre visite nous vous parlerons de son passé.<br><br>',
+desc_co:'7 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : ?<br><br>Bianca, bella cagnulella di 7 anni. Ebbè, bella... ci vulia à dilla prestu... 😢<br><br>Quand\'è no l\'avemu vista, avemu cridutu di allucinà tant\'ella era in un statu spaventosu. Probabilmente ùn era mai stata toilettata dapoi a so nascita... una quantità enorme di peli appiccicati, infeltriti, immondi è maleodoranti.<br><br>Ringraziemu di core à Solenn di WOUAF MOBILE, chì hè ghjunta à aiutacci à titulu gratuitu è chì hà passatu più di duie ore per rende li torna l\'aspettu d’un cane 🙏🙏. Solenn ùn avia mai vistu un cane in un statu cusì disgraziatu è hà duvutu rasalla cumpletamente.<br><br>A maltrattanza animale pò piglià parechje forme, ma hè sicuru chì Bianca hè una vittima di più 😩.<br><br>S\'è a storia di Bianca vi tocca u core, venite à rende li visita. Vi parleremu di u so passatu.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Arthur',
+species:'chien',
+age:'adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Arthur/Arthur_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur/Arthur_1.jpg',alt:'Arthur photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur/Arthur_2.jpg',alt:'Arthur photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Arthur/Arthur_3.jpg',alt:'Arthur photo 3'},
+],
+race_fr:'x Labrit',
+race_co:'x Labrit',
+desc_fr:'3 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : ?<br><br>Arthur ❤️.<br>On ne sait pas réellement ce qu\'a été son passé mais nous avons mis plusieurs mois à pouvoir l\'approcher. Terrorisé, il refusait tout contact. Le mouvement de nos mains le faisait bondir en arrière.<br>Petit à petit il s\'est rapproché, puis il est venu nous renifler mais des qu\'on le regardait, il reculait. Et puis les mois passants, un petit bisou d\'otarie dans le creux des mains, jusqu\'à ce jour où enfin nous avons réussi à le caresser 🥳.<br>Aujourd\'hui Arthur est bien mieux dans ses pattes, c\'est un loulou très joueur et très câlin dès lors qu\'il est en confiance. Chaque jour nous avons droit à de grandes et longues démonstrations d\'amour avec bien sur ses fameux bisous otarie 🥰.<br>S\'il n\'est pas à l\'aise avec une personne ou une situation, il se recule et observe de loin.<br><br>Arthur s\'entend très bien avec ses congénères mâles et femelles. Nous ne connaissons pas ses ententes avec nos amis les chats 🐈‍⬛?<br>Parce qu\'il n\'est pas encore à l\'aise en toute circonstance, nous éviterons les jeunes enfants par précaution. Arthur a énormément progressé depuis son arrivée et s\'est beaucoup ouvert au monde et aux personnes, il est prêt à rejoindre une nouvelle famille qui continuera de lui faire decouvrir ce qu\'est la vie et qui l\'aimera comme nous l\'aimons 🙏.<br><br>Notre bel Arthur vous attend pour une nouvelle vie 🙏<br><br>',
+desc_co:'3 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : ?<br><br>Arthur ❤️.<br>Ùn si sà micca veramente quale hè statu u so passatu, ma ci sò voluti parechji mesi prima ch\'è no pudessimu avvicinà ci à ellu. Terrorsizatu, ricusava ogni cuntattu. U minimu muvimentu di e nostre mani u facia saltà in daretu.<br>Pianu pianu si hè avvicinatu, dopu hè vinutu à annusacci, ma appena u fighjavamu, si ritirava. È po, cù u passà di i mesi, ci hà rigalatu un picculu basgiu di otaria in u cavu di e mani, sin\'à quellu ghjornu induve infine simu riesciuti à carezzallu 🥳.<br>Oghje Arthur si sente assai megliu, hè un loulou assai ghjucarellu è assai affettuosu appena si sente in fiducia. Ogni ghjornu avemu dirittu à grande è longhe manifestazioni d\'amore, cù benintesa i so famosi basgi d’otaria 🥰.<br>S\'ellu ùn si sente micca à u so agio cù una persona o in una situazione, si mette in daretu è osserva da luntanu.<br><br>Arthur s\'intende assai bè cù i so simili, masci è femine. Ùn cunniscimu micca u so cumpurtamentu cù i nostri amichi misgi 🐈‍⬛.<br>Postu ch\'ellu ùn hè ancu micca à l\'agio in ogni circustanza, preferimu evitalli a presenza di zitelli chjuchi per precauzione. Arthur hà fattu prugressi tamanti dapoi a so ghjunta è s\'hè apertu assai à u mondu è à e persone. Hè prontu avà à raghjunghje una nova famiglia chì cuntinuerà à fà li scopre a vita è chì l\'amerà quant\'è noi l’amemu 🙏.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Asco',
+species:'chien',
+age:'adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Asco/Asco_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Asco/Asco_1.jpg',alt:'ASco photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Asco/Asco_2.jpg',alt:'ASco photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Asco/Asco_3.jpg',alt:'ASco photo 3'},
+],
+race_fr:'x Epagneul',
+race_co:'x Epagneul',
+desc_fr:'1,5 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : OK<br><br>Quand Asco est arrivé au refuge, il était confiant malgré le bruit et les aboiements car il était avec son maître...Puis quelqu\'un l\'a pris par la laisse, il a résisté car il se demandait pourquoi il ne venait pas avec lui... On l\'a installé dans un petit box. Il a attendu toute la nuit devant la porte en pleurant. Il a refusé de manger. Les jours se sont succédés... Quand on le sortait de son box il se précipitait vers l\'entrée croyant qu\'enfin il allait rentrer chez lui...<br><br>C\'est l\'histoire d\'Asco tout jeune chien croisé épagneul de 14 mois plein de vie et d\'amour à donner. Malgré cette épreuve, il garde confiance en l\'humain et n\'attend qu\'une chose : trouver un foyer où il sera enfin aimé pour toujours.<br><br>Derrière son regard plein de douceur se cache un jeune chien affectueux, joueur et débordant d\'amour à offrir.<br><br>Venez rencontrer Asco et offrez-lui la seconde chance qu\'il mérite.<br><br>',
+desc_co:'1,5 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>Quand’Ascu hè ghjuntu à u rifugiu, era cunfidente malgradu u rimore è l’abbaii, perchè era cù u so patrone... Dopu qualchissia l’hà pigliatu da a guinzaglia. Hà resistitu perchè si dumandava perchè u so patrone ùn vinia micca cun ellu... L’anu stallatu in un picculu box. Hà aspettatu tutta a notte davanti à a porta pienghjendu. Hà ricusatu di manghjà. I ghjorni sò passati... Quand’ellu surtia da u so box, si precipitava versu l’entrata, cridendu chì infine avia da vultà in casa soia...<br><br>Quessa hè a storia d’Ascu, un ghjovanu cane incrociu di Spaniel di 14 mesi, pienu di vita è d’amore da dà. Malgradu sta prova, mantene a so fiducia in l’omu è ùn aspetta chè una cosa : truvà una casa induve serà infine amatu per sempre.<br><br>Daretu à u so sguardu pienu di dolcezza si piatta un ghjovanu cane affettuosu, ghjucarellu è trabuccante d’amore da offre.<br><br>Venite à scuntrà à Ascu è date li a seconda pussibilità ch’ellu merita.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Link',
+species:'chien',
+age:'adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Link/Link_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Link/Link_1.jpg',alt:'Link photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Link/Link_2.jpg',alt:'Link photo 2'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Link/Link_3.jpg',alt:'Link photo 3'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Link/Link_4.jpg',alt:'Link photo 4'},
+],
+race_fr:'x Malinois',
+race_co:'x Malinois',
+desc_fr:'2 ans<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : ?<br><br>Cela fait maintenant trop longtemps que Link est au refuge !!<br><br>Vous avez l\'impression que Link vous fait un clin d\'œil ? Non, c\'est qu\'il n\'a plus qu\'un œil. Il est arrivé au refuge comme ça. Pourquoi ? Comment ? Nous n\'en savons rien.<br><br>Nous ne connaissons pas son passé mais certainement rien de bien folichon… Trouvé en errance avec un copain aujourd\'hui adopté.<br><br>Link est un chien exceptionnel lorsqu\'il a compris que vous ne lui ferez pas de mal. Quand il vous fait confiance c\'est un amour à l\'écoute, très câlin et joueur. Il a également de très bonnes bases d\'éducation.<br><br>Il s\'entend bien avec ses congénères femelles et la plupart des mâles.<br><br>Nous recherchons une famille ayant l\'habitude des chiens qui saura lui offrir un cadre, une routine les premiers temps, de belles balades et beaucoup de câlins<br><br>',
+desc_co:'2 anni<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : ?<br><br>Hè oramai troppu tempu chì Link hè à u rifugiu !!<br><br>Avete l’impressione chì Link vi faci l’ochju ? Innò, hè perchè ùn li ferma più chè un ochju. Hè ghjuntu à u rifugiu cusì. Perchè ? Cumu ? Ùn ne sapemu nunda.<br><br>Ùn cunniscimu micca u so passatu, ma di sicuru ùn hà micca cunnisciutu una vita felice... Hè statu trovu in vagabondaghju cù un cumpagnu chì, ellu, hè oghje aduttatu.<br><br>Link hè un cane eccezziunale quand’ellu hà capitu chì ùn li farete micca male. Quand’ellu vi dà a so fiducia, hè un veru tesoru : attentu, assai teneru è ghjucarellu. Hà ancu ottime basi d’educazione.<br><br>S’intende bè cù e so simule femine è cù a maiò parte di i masci.<br><br>Cerchemu una famiglia abituata à i cani, chì li saperà offre un quadru rassicurante, una rutina durante i primi tempi, belle spassighjate è assai carezze.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+{
+name:'Bandit',
+species:'chien',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'S.C.D.A. - Refuge Caldaniccia/Bandit/Bandit_1.jpg',
+medias:
+[
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Bandit/Bandit_1.jpg',alt:'Bandit photo 1'},
+{type:'image',src:'S.C.D.A. - Refuge Caldaniccia/Bandit/Bandit_2.jpg',alt:'Bandit photo 2'},
+],
+race_fr:'x Border',
+race_co:'x Border',
+desc_fr:'4 mois<br>Vacciné, identifié & stérilisé<br>🐶 : OK<br>🐱 : Ok<br><br>L\'histoire de Bandit :<br>Au départ, c\'est parti d\'une bonne intention : une personne compatissante a récupéré ce chiot alors qu\'il n\'avait qu\' un mois et une semaine, donc séparé bien trop tôt de sa maman. Il était infesté de puces, également mal nourri car il avait dû se battre avec sa fratrie pour sa nourriture. Tous les marqueurs étaient au rouge mais cette dame n\'a écouté que son bon cœur et a voulu lui donner une nouvelle vie. Seulement, Bandit  fait  de la protection de ressources et n\'est pas du tout adapté à vivre en famille avec un enfant en bas âge.<br><br>C\'est pourtant un chien qui a beaucoup de qualités, il apprend très vite, est très intelligent et a acquis certaines bases d\'éducation. Il n\'est tout simplement pas tombé sur la bonne famille.<br><br>Pour lui donner une nouvelle chance, il lui faudrait un foyer sans enfant et des personnes suffisamment disponibles pour reprendre son éducation.<br><br>',
+desc_co:'4 mesi<br>Vaccinatu, identificatu è sterilizatu<br>🐶 : OK<br>🐱 : OK<br><br>L’istoria di Banditu :<br>À l’iniziu, tuttu era partutu da una bona intenzione : una persona cumpassionevule hà accoltu issu cucciolu quand’ellu avia solu un mese è una settimana, dunque separatu troppu prestu da a so mamma. Era pienu di pulci, è ancu malnutritu, postu ch’ellu avia duvutu luttà cù i so fratelli è surelle per manghjà. Tutti l’indizii eranu à u rossu, ma sta signora hà seguitu solu u so bon core è hà vulsutu offre li una nova vita.<br><br>Ma Banditu face prutezzione di e so risorse è ùn hè micca adattatu à una vita di famiglia cù un zitellu chjucu.<br><br>Eppuru, hè un cane chì hà assai qualità. Impara assai prestu, hè assai intelligente è hà digià acquistatu certe basi d’educazione. Ùn hè simpliciamente micca cascatu in a famiglia adatta.<br><br>Per dà li una nova pussibilità, li ci vularia una casa senza zitelli è persone abbastanza dispunibule per ripiglià a so educazione.<br><br>',
+asso:'S.C.D.A. - Refuge Caldaniccia'},
+
+/* ===== LISTE DES CHATS ===== */
+
+{
+name:'Praline',
+species:'chat',
+age:'chaton',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Praline/Praline_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Praline/Praline_1.jpg',alt:'Praline photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'2 mois<br>Vacciné, identifié<br><br>Praline est une petite minette très douce, pleine de vie et incroyablement joueuse.<br><br>Elle est encore un peu trop jeune pour rejoindre sa future famille, car elle n\'a pas encore 2 mois.<br><br>En revanche, vous pouvez d\'ores et déjà la réserver. ❤️<br><br>',
+desc_co:'2 mesi<br>Vaccinatu, identificatu<br><br>Pralina hè una piccula misgia assai dolce, piena di vita è incredibilmente ghjucarella.<br><br>Hè sempre un pocu troppu ghjovana per raghjunghje a so futura famiglia, chì ùn hà ancu 2 mesi.<br><br>Però, pudete dighjà riservà la. ❤️<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Bob',
+species:'chat',
+age:'adulte',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Bob/Bob_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Bob/Bob_1.jpg',alt:'Bob photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'5 ans<br>Vacciné, identifié<br><br>Depuis plusieurs mois, une personne bienveillante veille sur Bob, mais elle est malheureusement contrainte de partir. Il n\'y aura bientôt plus personne pour s\'occuper de lui.<br><br>Bob a environ 5 ans. C\'est un chat d\'une extrême gentillesse, avec une adorable bouille.<br><br>Nous souhaitons de tout cœur lui éviter de rester seul dans la rue et de devoir chercher chaque jour de quoi se nourrir.<br><br>Si vous pouvez lui offrir un peu d\'attention, un foyer, n\'hésitez pas à nous contacter.<br><br>',
+desc_co:'5 anni<br>Vaccinatu, identificatu<br><br>Dapoi parechji mesi, una persona benevulente s\'occupa di Bob, ma sfurtunatamente hè custretta à parte. Ùn ci serà prestu più nimu per occupassi di ellu.<br><br>Bob hà circa 5 anni. Hè un misgiu d\'una buntà straordinaria, cù una faccina adorabile.<br><br>Vuleriamu di tuttu core evitalli di firmà solu in carrughju è d\'esse obligatu à circà ogni ghjornu di chè nutrissi.<br><br>S\'è vo pudete offre li un pocu d’attenzione, una casa è un pocu d’amore, ùn esitate micca à cuntattacci. 🐾❤️<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Caramel',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Caramel/Caramel_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Caramel/Caramel_1.jpg',alt:'Caramel photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'4 mois<br>Vacciné, identifié<br><br>🧡 Caramel attend sa famille pour la vie. Son petit frère Tigri est parti à l\'essai, et maintenant c\'est au tour de Caramel d\'espérer une belle rencontre.<br><br>Si vous êtes amoureux des petits rouquins, laissez-vous tenter ! 🧡<br><br>Caramel est un peu timide au premier abord, mais si vous connaissez les chats roux, vous savez qu\'ils sont d\'une extrême gentillesse. Il ne lui faudra pas longtemps pour vous faire confiance et dévoiler toute sa douceur.<br><br>',
+desc_co:'4 mesi<br>Vaccinatu, identificatu<br><br>🧡 Caramel aspetta sempre a so famiglia per a vita. U so fratellucciu Tigri hè partutu in prova, è avà tocca à Caramel di sperà una bella scontru.<br><br>S\'è vo site innamurati di i picculi misgi rossi, lasciatevi tentà ! 🧡<br><br>Caramel hè un pocu timidu à u principiu, ma s\'è vo cunniscite i misgi rossi, sapete ch\'elli sò d’una buntà eccezziunale. Ùn ci vulerà tantu tempu per fà vi fiducia è palisà tutta a so dolcezza.🐾🧡<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Ulysse',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Ulysse/Ulysse_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Ulysse/Ulysse_1.jpg',alt:'Ulysse photo 1'},
+{type:'image',src:'L\'Arche des Animaux/Ulysse/Ulysse_2.jpg',alt:'Ulysse photo 2'},
+],
+race_fr:'x Chartreux',
+race_co:'x Chartreux',
+desc_fr:'4 mois<br>Vacciné, identifié<br><br>Ulysse et son frère Hades (également à l\'adoption) sont nés dans le jardin d\'une dame âgée que notre association essaye d’aider. Elle se retrouve aujourd\'hui avec une vingtaine de chats et huit chatons à sa charge.<br><br>Notre priorité est de faire stériliser les mamans, afin d\'éviter de nouvelles naissances. En attendant, nous essayons de soulager cette dame en trouvant de bonnes familles pour ces deux petits bébés.<br><br>Ulysse et Hades sont encore en période de socialisation. Nous recherchons donc des adoptants patients, disponibles et connaissant les besoins des chatons.<br><br>',
+desc_co:'4 mesi<br>Vaccinatu, identificatu<br><br>Ulysse è u so fratellu Hades (ancu ellu in aduzione) sò nati in u giardinu d\'una signora anziana chì a nostra associu prova à aiutà. Si ritrova oghje cù una vintina di misgi è ottu gattini à a so carica.<br><br>A nostra priorità hè di fà sterilizà e mamme, per evità altre nascite. Intantu, circhemu d\'allevià u pesu di sta signora truvendu bone famiglie per issi dui picculi ciucci.<br><br>Ulysse è Hades sò sempre in periodu di socializazione. Cerchemu dunque aduttanti pazienti, dispunibuli è chì cunnoscenu bè i bisogni di i gattini.<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Hades',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Hades/Hades_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Hades/Hades_1.jpg',alt:'Hades photo 1'},
+],
+race_fr:'x Chartreux',
+race_co:'x Chartreux',
+desc_fr:'4 mois<br>Vacciné, identifié<br><br>Hades et son frère Ulysse (également à l\'adoption) sont nés dans le jardin d\'une dame âgée que notre association essaye d’aider. Elle se retrouve aujourd\'hui avec une vingtaine de chats et huit chatons à sa charge.<br><br>Notre priorité est de faire stériliser les mamans, afin d\'éviter de nouvelles naissances. En attendant, nous essayons de soulager cette dame en trouvant de bonnes familles pour ces deux petits bébés.<br><br>Ulysse et Hades sont encore en période de socialisation. Nous recherchons donc des adoptants patients, disponibles et connaissant les besoins des chatons.<br><br>',
+desc_co:'4 mesi<br>Vaccinatu, identificatu<br><br>Hades è u so fratellu Ulysse (ancu ellu in aduzione) sò nati in u giardinu d\'una signora anziana chì a nostra associu prova à aiutà. Si ritrova oghje cù una vintina di misgi è ottu gattini à a so carica.<br><br>A nostra priorità hè di fà sterilizà e mamme, per evità altre nascite. Intantu, circhemu d\'allevià u pesu di sta signora truvendu bone famiglie per issi dui picculi ciucci.<br><br>Hades è Ulysse sò sempre in periodu di socializazione. Cerchemu dunque aduttanti pazienti, dispunibuli è chì cunnoscenu bè i bisogni di i gattini.<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Smallville',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Smallville/Smallville_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Smallville/Smallville_1.jpg',alt:'Smallville photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vacciné, identifié<br><br>Smallville, un adorable petit chaton tigré qui n\'attend plus qu\'une chose : trouver sa famille.<br><br>Il  est sociable, câlin et plein de tendresse. Il adore la compagnie et ne demande qu\'à partager de beaux moments avec les humains qui lui ouvriront leur cœur.Et regardez cette petite bouille toute ronde ❤️<br><br>Franchement, comment ne pas craquer ?<br><br>Aidez-nous à lui offrir ce bonheur !<br><br>',
+desc_co:'3 mesi<br>Vaccinatu, identificatu<br><br>Smallville, un adorabile gattinu tigratu chì ùn aspetta più chè una cosa : truvà a so famiglia.<br><br>Hè socièvule, teneru è pienu di dolcezza. Adora a cumpagnia è ùn dumanda cà di sparte belli mumenti cù l’umani chì li apreranu u so core. È fighjate appena sta piccula faccina tutta tonda ❤️<br><br>Francamente, cumu fà per ùn lasciassi cunquistà ?<br><br>Aiutate ci à offre li issu bonheur !<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Miel',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Miel/Miel_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Miel/Miel_1.jpg',alt:'Miel photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vacciné, identifié<br><br>Miel est un petit chaton très calme , docile , joueur et très gourmand !!!!<br><br>Une double adoption avec sa soeur Canelle serait magnifique<br><br>',
+desc_co:'3 mesi<br>Vaccinatu, identificatu<br><br>Meli hè un picculu gattinu assai tranquillu, ubbidiente, ghjucarellu è assai golosu !!!!<br><br>Una doppia aduzione cù a so surella Canelle seria magnifica.<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Canelle',
+species:'chat',
+age:'chaton',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'L\'Arche des Animaux/Canelle/Canelle_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Canelle/Canelle_1.jpg',alt:'Canelle photo 1'},
+{type:'image',src:'L\'Arche des Animaux/Canelle/Canelle_2.jpg',alt:'Canelle photo 2'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vacciné, identifié<br><br>Canelle est une petite boule d\'amour, très sociable, joueuse, câline et pleine de joie de vivre. <br><br>Elle est identifiée et primo-vaccinée, et elle est prête à commencer une nouvelle vie auprès d\'une famille aimante.<br><br>Comme tous nos protégés, Cannelle mérite de grandir entourée d\'amour, de douceur et de bienveillance.<br><br>Une double adoption avec son frère Miel serait magnifique<br><br>',
+desc_co:'3 mesi<br>Vaccinatu, identificatu<br><br>Cannella hè una piccula palla d’amore, assai socièvule, ghjucarella, tenera è piena di gioia di campà.<br><br>Hè identificata è hà ricevutu u so primu vaccinu, è hè pronta à principià una nova vita accantu à una famiglia piena d’amore.<br><br>Cum’è tutti i nostri prutetti, Cannella merita di cresce circundata d’amore, di dolcezza è di benevulenza.<br><br>Una doppia aduzione cù u so fratellu Meli seria magnifica<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Bichette',
+species:'chat',
+age:'chaton',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'Des Z\'amours de Chats/Bichette/Bichette_1.jpg',
+medias:
+[
+{type:'image',src:'Des Z\'amours de Chats/Bichette/Bichette_1.jpg',alt:'Bichette photo 1'},
+{type:'image',src:'Des Z\'amours de Chats/Bichette/Bichette_2.jpg',alt:'Bichette photo 2'},
+{type:'image',src:'Des Z\'amours de Chats/Bichette/Bichette_3.jpg',alt:'Bichette photo 3'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'x mois<br>Vacciné, identifié<br><br>Bichette... Quoi ? Non non je suis pas allé ramoner la cheminée, ce sont de vraies taches que j\'ai  sur la tête  c\'est plutôt  mignon vous trouvez pas ?<br><br>',
+desc_co:'x mesi<br>Vaccinatu, identificatu<br><br>Bichette... Chì ? Innò innò, ùn sò micca andata à ramunà a fumaghjola ! Quessi sò veri macchji chì aghju nant’à a testa. Hè piuttostu carinu, ùn truvate micca ?<br><br>',
+asso:'Des Z\'amours de Chats'},
+{
+name:'Fleur',
+species:'chat',
+age:'adulte',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'Des Z\'amours de Chats/Fleur/Fleur_1.jpg',
+medias:
+[
+{type:'image',src:'Des Z\'amours de Chats/Fleur/Fleur_1.jpg',alt:'Fleur photo 1'},
+{type:'image',src:'Des Z\'amours de Chats/Fleur/Fleur_2.jpg',alt:'Fleur photo 2'},
+{type:'image',src:'Des Z\'amours de Chats/Fleur/Fleur_3.jpg',alt:'Fleur photo 3'},
+{type:'image',src:'Des Z\'amours de Chats/Fleur/Fleur_4.jpg',alt:'Fleur photo 4'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'5 ans<br>Vaccinée, identifiée & stérilisée<br><br>Fleur, 5 ans cherche une nouvelle famille pour la vie.<br><br>Sa maman humaine très âgée n\'a pu la garder. Fleur ne s\'entend pas trop avec ses congénères mais ne cherche pas la bagarre.<br><br>Elle a une alimentation spéciale, hills gastro intestinal 😞<br><br>',
+desc_co:'5 anni<br>Vaccinata, identificata è sterilizata<br><br>Fiore, 5 anni, cerca una nova famiglia per a vita.<br><br>A so mamma umana, assai anziana, ùn hà pussutu tene la. Fiore ùn s’accorda tantu bè cù l’altri cani, ma ùn cerca micca a lite.<br><br>Hà bisognu d’una alimentazione speciale : Hill’s Gastrointestinal 😞<br><br>',
+asso:'Des Z\'amours de Chats'},
+{
+name:'Bibiche',
+species:'chat',
+age:'chaton',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'Des Z\'amours de Chats/Bibiche/Bibiche_1.jpg',
+medias:
+[
+{type:'image',src:'Des Z\'amours de Chats/Bibiche/Bibiche_1.jpg',alt:'Bibiche photo 1'},
+{type:'image',src:'Des Z\'amours de Chats/Bibiche/Bibiche_2.jpg',alt:'Bibiche photo 2'},
+{type:'image',src:'Des Z\'amours de Chats/Bibiche/Bibiche_3.jpg',alt:'Bibiche photo 3'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vaccinée, identifiée<br><br>Bibiche attend sa famille pour la vie.<br><br>Petite coquine d\'environ 2 mois et demi<br><br>',
+desc_co:'3 mesi<br>Vaccinata, identificata<br><br>Bibiche aspetta a so famiglia per a vita.<br><br>Hè una piccula birbantella d’apprussimativamente dui mesi è mezu.<br><br>',
+asso:'Des Z\'amours de Chats'},
+{
+name:'Mathou',
+species:'chat',
+age:'senior',
+gender:'♂',
+area:'Ajaccio',
+urgent:true,
+fiv:false,
+photo:'L\'Arche des Animaux/Mathou/Mathou_1.jpg',
+medias:
+[
+{type:'image',src:'L\'Arche des Animaux/Mathou/Mathou_1.jpg',alt:'Mathou photo 1'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'14 ans<br>Vacciné, identifié & stérilisé<br><br>Sa propriétaire âgée est partie en EPHAD et le pauvre Mathou se retrouve sans maitresse après une longue vie de bons et loyaux services auprès de sa famille.<br><br>Ce pauvre vieux chat va se retrouver tout seul dans un village sans personne pour le nourrir.<br><br>Mathou a une plaie à l\'œil sans gravité et est soigné pour cela.<br><br>Nous recherchons une famille d\'accueil ou un adoptant en urgence.<br><br>Les frais vétérinaires seront à la charge de l\'association.<br><br>',
+desc_co:'14 anni<br>Vaccinatu, identificatu è sterilizatu<br><br>A so pruprietaria, anziana, hè partita in EHPAD è u poveru Mathou si ritrova senza a so maestra dopu una longa vita di boni è leali servizii accantu à a so famiglia.<br><br>Issu poveru vechju ghjattu risicheghja di truvà si solu in un paese senza nimu per nutri lu.<br><br>Mathou hà una piccula ferita à l’ochju, senza gravità, è hè curatu per quessa.<br><br>Cerchemu d’urgenza una famiglia d’accoglienza o una famiglia d’adozione.<br><br>E spese veterinarie saranu à carica di l’associu.<br><br>',
+asso:'L\'Arche des Animaux'},
+{
+name:'Bouchon',
+species:'chat',
+age:'chaton',
+gender:'♂',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'Des Z\'amours de Chats/Bouchon/Bouchon_1.jpg',
+medias:
+[
+{type:'image',src:'Des Z\'amours de Chats/Bouchon/Bouchon_1.jpg',alt:'Bouchon photo 1'},
+{type:'image',src:'Des Z\'amours de Chats/Bouchon/Bouchon_2.jpg',alt:'Bouchon photo 2'},
+{type:'image',src:'Des Z\'amours de Chats/Bouchon/Bouchon_3.jpg',alt:'Bouchon photo 3'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vacciné, identifié<br><br>Bouchon, récupéré sous une voiture sur Porticcio puis sous perfusion car en hypothermie...<br><br>Il espère trouver une gentille famille pour lui donner plein d\'amour et oublier son triste début de vie<br><br>',
+desc_co:'3 mesi<br>Vaccinatu, identificatu<br><br>Bouchon, recuperatu sott’à una vittura in Portivechju (Porticcio), dopu messu sott’à perfusione perchè era in ipotermia...<br><br>Spera di truvà una famiglia gentile chì li darà tantu amore è li farà scurdà u so tristu principiu di vita.<br><br>',
+asso:'Des Z\'amours de Chats'},
+{
+name:'Baya',
+species:'chat',
+age:'chaton',
+gender:'♀',
+area:'Ajaccio',
+urgent:false,
+fiv:false,
+photo:'Des Z\'amours de Chats/Baya/Baya_1.jpg',
+medias:
+[
+{type:'image',src:'Des Z\'amours de Chats/Baya/Baya_1.jpg',alt:'Baya photo 1'},
+{type:'image',src:'Des Z\'amours de Chats/Baya/Baya_2.jpg',alt:'Baya photo 2'},
+{type:'image',src:'Des Z\'amours de Chats/Baya/Baya_3.jpg',alt:'Baya photo 3'},
+],
+race_fr:'Chat Européen',
+race_co:'Chat Européen',
+desc_fr:'3 mois<br>Vaccinée, identifiée<br><br>Récupérée dans un état déplorable à l\'age de 3 semaines avec 5 de ses congénères, Baya attend aujourd\'hui sa famille pour la vie.<br><br>Baya est une petite chatte très sociable, joueuse et câline, en plus d\'être une vraie petite équilibriste<br><br>Elle est également très rusée depuis toute petite, elle est la première de la portée à comprendre et découvrir les nouvelles activités (ou éventuellement comment se faire la malle de la chatterie pour aller dans le salon avec les grands)<br><br>',
+desc_co:'3 mesi<br>Vaccinata, identificata<br><br>Recuperata in un statu deplurevule à l’età di trè settimane cù cinque di i so fratelli è surelle, Baya aspetta oghje a so famiglia per a vita.<br><br>Baya hè una piccula ghjatta assai sociabile, ghjucarella è carezzevule, in più d’esse una vera piccula equilibrista.<br><br>Hè ancu assai astuta dapoi ch’ella era chjuca : hè stata a prima di a purtata à capisce è scopre e nove attività (o eventualmente à truvà cumu fughje da a chatteria per andà in salottu cù i grandi !).<br><br>',
+asso:'Des Z\'amours de Chats'},
 ];
 
 const assos = [
@@ -816,12 +1257,21 @@ const assos = [
     "desc_co": "Alloghju, cure, sterilizazione, identificazione, aduzzione di misgi solu",
     "link": "",
     "facebook": "https://m.facebook.com/p/LArche-des-animaux-61553015762134/"
+  },
+  {
+    "name": "Des Z'amours de Chats",
+    "icon": "🐱",
+    "loc": "Ajaccio",
+    "type": "Association loi 1901",
+    "statut": "",
+    "adresse": "67 allée de la Gravona, 20167 Ajaccio",
+    "tel": "06 20 47 04 32",
+    "email": "associationdeszamoursdechats@gmail.com",
+    "desc_fr": "Stérilisation, identification, sauvetage, adoption de chats et chatons uniquement. Actions sans subvention ni aide publique, uniquement via dons et bénévoles",
+    "desc_co": "Sterilizazione, identificazione, salvataghju è aduzzione di misgi è gattini solu. Azzioni senza suvvenzione nè aiutu publicu, realizate solu grazia à i doni è à l’impegnu di i vuluntarii",
+    "link": "",
+    "facebook": "https://www.facebook.com/associationdeszamoursdechats/"
   }
-];
-const benevoles = [
-  {type:'famille',title_fr:'Famille d\'accueil chatons',title_co:'Famiglia d\'accogliu gattini',desc_fr:'Accueillir temporairement un ou plusieurs jeunes profils avant adoption.',desc_co:'Accoglie à tempu unu o parechji profili ghjovani nanzu à l\'adozione.',assos:["Les Chats de l'Île"]},
-  {type:'transport',title_fr:'Transport vétérinaire',title_co:'Trasportu veterinariu',desc_fr:'Aider les associations pour les allers-retours vers les cliniques partenaires.',desc_co:'Aiutà l\'associi per l\'andate è e venute versu e cliniche partenarie.',assos:["Les Chats de l'Île","SPA Ajaccio","Les Sans Colliers de Corse"]},
-  {type:'nourrissage',title_fr:'Suivi de colonies libres',title_co:'Seguitu di culonie libare',desc_fr:'Participer au nourrissage et au repérage de chats libres sur secteur.',desc_co:'Participà à u nutrimentu è à u ripèru di gatti libari nantu à u settore.',assos:["Les Chats de l'Île","Des Z'amours de Chats"]}
 ];
 
 let lang='fr';
@@ -843,7 +1293,6 @@ function formatCompatText(html){
     return emoji + sep + renderCompatIcon(value);
   });
 }
-function typeLabel(v){return t('types.' + v)}
 
 function buildFilters(){
   document.getElementById('filterSpecies').innerHTML = `<option value="">${t('search.allSpecies')}</option><option value="chat">${t('search.cat')}</option><option value="chien">${t('search.dog')}</option>`;
@@ -877,13 +1326,16 @@ function animalCard(a){
   </article>`;
 }
 
-function sortByPriority(list){
-  return [...list].sort((a, b) => {
-    const aP = (a.species==='chien' && a.urgent) ? 0 : (a.species==='chien' && a.age==='senior') ? 1 : 2;
-    const bP = (b.species==='chien' && b.urgent) ? 0 : (b.species==='chien' && b.age==='senior') ? 1 : 2;
-    return aP - bP;
-  });
-}
+function sortByPriority(list){  
+  return [...list].sort((a, b) => {  
+    // Priorité 1 : toutes les fiches marquées urgent:true, quelle que soit l'espèce.  
+    // Correction : l'ancienne règle ne remontait que les chiens urgents,  
+    // ce qui empêchait les chats urgents, comme Mathou, de passer en tête.  
+    const aP = a.urgent ? 0 : (a.age==='senior' ? 1 : 2);  
+    const bP = b.urgent ? 0 : (b.age==='senior' ? 1 : 2);  
+    return aP - bP;  
+  });  
+}  
 function renderAnimals(list){
   const sorted = sortByPriority(list);
   const showMore = document.getElementById('showMoreBtn');
@@ -929,26 +1381,6 @@ function renderAssos(){
   }).join('');
 }
 
-function renderVol(){
-  document.getElementById('volGrid').innerHTML = benevoles.map(function(v){
-    var desc = lang==='fr' ? v.desc_fr : v.desc_co;
-    var assosHtml = '';
-    if(Array.isArray(v.assos) && v.assos.length){
-      var title = lang==='fr' ? 'Associations concernées' : 'Associi cuncernate';
-      assosHtml = '<div class="vol-asso-title">' + title + '</div>' +
-                  '<div class="vol-assos">' +
-                  v.assos.map(function(name){ return '<span class="vol-asso-pill">' + name + '</span>'; }).join('') +
-                  '</div>';
-    }
-    return '<article class="card vol">' +
-      '<div class="tag" style="display:inline-flex">' + typeLabel(v.type) + '</div>' +
-      '<h3>' + (lang==='fr' ? v.title_fr : v.title_co) + '</h3>' +
-      '<p>' + desc + '</p>' +
-      assosHtml +
-      '</article>';
-  }).join('');
-}
-
 function renderSteps(){
   const steps = i18n[lang]['steps.cards'];
   document.getElementById('stepsGrid').innerHTML =
@@ -982,6 +1414,7 @@ function getFilteredAnimals(){
 function filterAnimals(){
   renderAnimals(getFilteredAnimals());
   updateActionButtons();
+  updateHeroCounters();
 }
 function toggleUrgentFilter(){
   urgentOnly = !urgentOnly;
@@ -1138,16 +1571,29 @@ function closeModalDirect(){
   document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow = ''
 }
 
+const counterIntervals = {};
 function animateCounter(id, target, suffix){
-  let count = 0;
   const el = document.getElementById(id);
   if(!el) return;
-  const step = Math.ceil(target/40);
-  const t = setInterval(()=>{
-    count = Math.min(count+step, target);
-    el.textContent = count+(suffix||'');
-    if(count>=target) clearInterval(t);
-  }, 35);
+  if(counterIntervals[id]) clearInterval(counterIntervals[id]);
+  let count = parseInt(el.textContent, 10);
+  if(isNaN(count)) count = 0;
+  if(count === target){ el.textContent = target + (suffix||''); return; }
+  const steps = 20;
+  const stepValue = (target - count) / steps;
+  let i = 0;
+  counterIntervals[id] = setInterval(()=>{
+    i++;
+    count += stepValue;
+    if(i >= steps){ count = target; clearInterval(counterIntervals[id]); }
+    el.textContent = Math.round(count) + (suffix||'');
+  }, 25);
+}
+function updateHeroCounters(){
+  const filtered = getFilteredAnimals();
+  const filteredAssos = new Set(filtered.map(a => a.asso).filter(Boolean));
+  animateCounter('counter-animaux', filtered.length);
+  animateCounter('counter-assos', filteredAssos.size);
 }
 
 function applyLang(next){
@@ -1166,7 +1612,6 @@ function applyLang(next){
   buildFilters();
   filterAnimals();
   renderAssos();
-  renderVol();
   renderSteps();
   updateActionButtons();
 }
@@ -1177,18 +1622,16 @@ document.addEventListener('DOMContentLoaded', () => {
   buildFilters();
   filterAnimals();
   renderAssos();
-  renderVol();
   renderSteps();
   updateActionButtons();
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
-  setTimeout(()=>{
-    animateCounter('counter-animaux', animals.length);
-    animateCounter('counter-assos', assos.length);
-  }, 600);
 });
 
 document.addEventListener('keydown', e => { const modalOpen = document.getElementById('modalBackdrop').classList.contains('open'); if(e.key === 'Escape') closeModalDirect(); if(!modalOpen) return; const prev = document.querySelector('.carousel-nav.prev'); const next = document.querySelector('.carousel-nav.next'); if(e.key === 'ArrowLeft' && prev) prev.click(); if(e.key === 'ArrowRight' && next) next.click(); });
 </script>
 
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28a278d7057f45439237ffcbde668571"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
